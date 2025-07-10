@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Obras - Grupo LM</title>
+    <meta name="description" content="Explore o portfólio detalhado de obras de engenharia, energia e construção do Grupo LM.">
+
+    <link rel="icon" href="logo/logo_principal.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#213761', /* Esta é a cor azul escura que o rodapé usa */
+                    secondary: '#ffffff',
+                    dark: '#000000'
+                },
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                },
+            }
+        }
+    }
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ---- ESTILOS DO CABEÇALHO E TRANSIÇÃO ---- */
+        .navbar {
+            background-color: transparent;
+            transition: all 0.4s ease-out;
+        }
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Lógica para trocar as logos na rolagem */
+        .logo-branca { display: block; }
+        .logo-cinza { display: none; }
+        .navbar.scrolled .logo-branca { display: none; }
+        .navbar.scrolled .logo-cinza { display: block; }
+
+        /* Lógica para trocar a cor dos links na rolagem */
+        .navbar.scrolled .nav-link,
+        .navbar.scrolled .mobile-menu-icon {
+            color: #000000;
+        }
+        .navbar.scrolled .nav-link:hover {
+            color: #213761;
+        }
+
+        /* Estilo do link ativo na navegação */
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid white;
+        }
+        .navbar.scrolled .nav-link.active {
+            border-bottom-color: #213761;
+        }
+
+        /* Lógica para o menu mobile */
+        .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .mobile-menu.open { max-height: 500px; }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(33, 55, 97, 0.35) 0%, rgba(26, 44, 79, 0.9) 100%);
+        }
+
+        /* Adicione estas regras para inverter as cores do botão 'Orçamento' no scroll */
+        .navbar.scrolled .btn-orcamento {
+            background-color: #213761 !important; /* Fundo azul primário */
+            color: #ffffff !important;           /* Texto branco */
+        }
+
+        .navbar.scrolled .btn-orcamento:hover {
+            background-color: #1a2c4f !important; /* Tom de azul mais escuro no hover */
+        }
+
+    </style>
+</head>
+<body class="bg-slate-50">
+
+   <header class="navbar fixed w-full z-50 py-4">
+    <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="logo/logo_branca.png" alt="Logo do Grupo LM" class="logo-branca h-10 w-auto transition-all duration-300">
+                <img src="logo/logo_principal.png" alt="Logo do Grupo LM" class="logo-cinza h-10 w-auto transition-all duration-300">
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-white font-medium transition-colors duration-300">Início</a>
+                <a href="index.html#about" class="nav-link text-white font-medium transition-colors duration-300">Sobre</a>
+                <a href="index.html#services" class="nav-link text-white font-medium transition-colors duration-300">Serviços</a>
+                <a href="index.html#projects" class="nav-link text-white font-medium transition-colors duration-300">Projetos</a>
+                <a href="index.html#locacao" class="nav-link text-white font-medium transition-colors duration-300">Locação</a>
+                <a href="obras1.html" class="nav-link text-white active">Obras</a>
+                <a href="index.html#contact" class="nav-link text-white font-medium transition-colors duration-300">Contato</a>
+                <a href="index.html#contact" class="btn-orcamento bg-white text-primary px-6 py-2 rounded-full font-medium text-sm ml-4 transition-colors duration-300">Orçamento</a>
+            </nav>
+
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i class="mobile-menu-icon fas fa-bars fa-lg text-white transition-colors duration-300"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white rounded-lg mt-3">
+            <div class="pt-4 pb-3 space-y-2 text-center">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Início</a>
+                <a href="index.html#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Sobre</a>
+                <a href="index.html#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Serviços</a>
+                <a href="index.html#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Projetos</a>
+                <a href="index.html#locacao" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Locação</a>
+                <a href="obras1.html" class="block px-3 py-2 rounded-md text-base font-bold text-primary bg-gray-100">Obras</a>
+                <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Contato</a>
+                <a href="index.html#contact" class="block w-auto mx-4 text-center btn-primary px-3 py-3 rounded-md text-base font-medium mt-3">Solicitar Orçamento</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <main>
+        <section class="relative bg-gray-900 pt-40 pb-12 text-center">
+    <div class="absolute inset-0">
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            style="top: 10%;"
+            class="w-full h-full object-cover"
+        >
+            <source src="videos/torres_eolicas.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
+        <div class="absolute inset-0 hero-overlay"></div>
+    </div>
+    <div class="relative container mx-auto px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">Portfólio de Obras</h1>
+        <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto">Excelência em cada detalhe, do projeto à execução.</p>
+    </div>
+</section>
+
+<div class="py-1 sm:py-1"> </div>
+
+            <!-- SEÇÃO DE OBRA 1: SUPRESSÃO SONDAOESTE/EDF -->
+            <section id="obra-supressao-sondaoeste"
+                class="bg-slate-50"
+                x-data="{
+                    open: false,
+                    currentIndex: 0,
+                    images: [
+                        'imagens/obras/01_Supressao_Sondaoeste_EDF/01.jpg',
+                        'imagens/obras/01_Supressao_Sondaoeste_EDF/02.jpg',
+                        'imagens/obras/01_Supressao_Sondaoeste_EDF/03.jpg',
+                        'imagens/obras/01_Supressao_Sondaoeste_EDF/04.jpg',
+                        'imagens/obras/01_Supressao_Sondaoeste_EDF/05.jpg',
+                        'imagens/obras/01_Supressao_Sondaoeste_EDF/06.jpg'
+                    ],
+                    next() {
+                        if (this.currentIndex < this.images.length - 1) {
+                            this.currentIndex++;
+                        }
+                    },
+                    previous() {
+                        if (this.currentIndex > 0) {
+                            this.currentIndex--;
+                        }
+                    },
+                    goTo(index) {
+                        this.currentIndex = index;
+                    }
+                }"
+            >
+                <div class="container mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="col-span-2 overflow-hidden rounded-lg shadow-lg"><img @click="open = true; currentIndex = 0" src="imagens/obras/01_Supressao_Sondaoeste_EDF/01.jpg" alt="Destaque Obra Jacobina" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"></div>
+                            <div class="overflow-hidden rounded-lg shadow-lg"><img @click="open = true; currentIndex = 1" src="imagens/obras/01_Supressao_Sondaoeste_EDF/02.jpg" alt="Detalhe Obra Jacobina" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"></div>
+                            <div class="overflow-hidden rounded-lg shadow-lg"><img @click="open = true; currentIndex = 2" src="imagens/obras/01_Supressao_Sondaoeste_EDF/03.jpg" alt="Outro detalhe Obra Jacobina" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"></div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" class="border-l-4 border-primary pl-8">
+                        <p class="font-semibold text-primary">SONDAOESTE</p>
+                        <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Supressão</h2>
+                        <div class="mt-6 space-y-4 text-gray-600 text-justify"><p>Demarcação topográfica, supressão manual e mecanizada.</p></div>
+                        <div class="mt-8 border-t border-gray-200 pt-6">
+                            <dl class="grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                                <div><dt class="font-medium text-gray-900">Cliente</dt><dd class="text-gray-600">Sondaoeste/EDF</dd></div>
+                                <div><dt class="font-medium text-gray-900">Localização</dt><dd class="text-gray-600">Jacobina - BA</dd></div>
+                                <div><dt class="font-medium text-gray-900">Ano</dt><dd class="text-gray-600">2025</dd></div>
+                                <div><dt class="font-medium text-gray-900">Escopo</dt><dd class="text-gray-600">Topografia e supressão</dd></div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lightbox para esta seção de obra -->
+                <div
+                    x-show="open"
+                    @keydown.escape.window="open = false"
+                    x-transition
+                    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4"
+                    style="display: none;"
+                >
+                    <div @click="open = false" class="absolute inset-0"></div>
+
+                    <button @click="open = false" class="absolute top-4 right-4 text-white text-3xl z-50 hover:opacity-75 transition-opacity">&times;</button>
+
+                    <button
+                        @click.stop="previous()"
+                        x-show="images.length > 1"
+                        :class="{ 'opacity-30 cursor-default': currentIndex === 0 }"
+                        :disabled="currentIndex === 0"
+                        class="absolute left-4 z-50 p-2 bg-white/20 rounded-full hover:bg-white/40 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+
+                    <!-- CONTÊINER DA IMAGEM E BOLINHAS (CORREÇÃO APLICADA AQUI) -->
+                    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center justify-center space-y-4 p-4">
+                        <div class="flex-grow flex items-center justify-center w-full">
+                            <img
+                                :src="images[currentIndex]"
+                                alt="Imagem ampliada"
+                                class="rounded-lg shadow-2xl w-auto h-auto max-w-full max-h-full object-contain"
+                            >
+                        </div>
+                        <div class="flex space-x-3 mt-4 flex-shrink-0" x-show="images.length > 1">
+                            <template x-for="(image, index) in images" :key="index">
+                                <button
+                                    @click.stop="goTo(index)"
+                                    class="h-3 w-3 rounded-full transition"
+                                    :class="{ 'bg-white': currentIndex === index, 'bg-white/40 hover:bg-white/70': currentIndex !== index }"
+                                ></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <button
+                        @click.stop="next()"
+                        x-show="images.length > 1"
+                        :disabled="currentIndex === images.length - 1"
+                        :class="{ 'opacity-30 cursor-default': currentIndex === images.length - 1 }"
+                        class="absolute right-4 z-50 p-2 bg-white/20 rounded-full hover:bg-white/40 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- SEPARADOR DE SEÇÃO -->
+
+</section> <hr class="my-16 border-t-2 border-gray-200 w-3/4 mx-auto"> <section id="proxima-obra-id"> </section>
+
+            <!-- SEÇÃO DE OBRA 2: SUBESTAÇÃO PINDAÍ II -->
+            <section id="obra-subestacao-pindai-ii"
+                class="bg-slate-50"
+                x-data="{
+                    open: false,
+                    currentIndex: 0,
+                    images: [
+                        'imagens/obras/02_Subestacao_Pindai_II/01.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/02.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/03.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/04.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/05.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/06.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/07.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/08.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/09.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/10.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/11.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/12.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/13.jpg',
+                        'imagens/obras/02_Subestacao_Pindai_II/14.jpg',
+                    ],
+                    next() {
+                        if (this.currentIndex < this.images.length - 1) {
+                            this.currentIndex++;
+                        }
+                    },
+                    previous() {
+                        if (this.currentIndex > 0) {
+                            this.currentIndex--;
+                        }
+                    },
+                    goTo(index) {
+                        this.currentIndex = index;
+                    }
+                }"
+            >
+                <div class="container mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right" class="border-l-4 border-primary pl-8 lg:order-first">
+                        <p class="font-semibold text-primary">RENOVA</p>
+                        <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Subestação Pindaí II</h2>
+                        <div class="mt-6 space-y-4 text-gray-600 text-justify"><p>Contenção em solo grampeado. Inserção de grampos, que são elementos estruturais que ajudam a resistir às forças que atuam sobre o solo.</p></div>
+                        <div class="mt-8 border-t border-gray-200 pt-6">
+                            <dl class="grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                                <div><dt class="font-medium text-gray-900">Cliente</dt><dd class="text-gray-600">Renova Energia</dd></div>
+                                <div><dt class="font-medium text-gray-900">Localização</dt><dd class="text-gray-600">Pindaí - BA</dd></div>
+                                <div><dt class="font-medium text-gray-900">Ano</dt><dd class="text-gray-600">2025</dd></div>
+                                <div><dt class="font-medium text-gray-900">Escopo</dt><dd class="text-gray-600">Contenção</dd></div>
+                            </dl>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="col-span-2 overflow-hidden rounded-lg shadow-lg"><img @click="open = true; currentIndex = 0" src="imagens/obras/02_Subestacao_Pindai_II/01.jpg" alt="Destaque Subestação" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"></div>
+                            <div class="overflow-hidden rounded-lg shadow-lg"><img @click="open = true; currentIndex = 1" src="imagens/obras/02_Subestacao_Pindai_II/02.jpg" alt="Detalhe Subestação" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"></div>
+                            <div class="overflow-hidden rounded-lg shadow-lg"><img @click="open = true; currentIndex = 2" src="imagens/obras/02_Subestacao_Pindai_II/03.jpg" alt="Outro detalhe Subestação" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lightbox para esta seção de obra -->
+                <div
+                    x-show="open"
+                    @keydown.escape.window="open = false"
+                    x-transition
+                    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4"
+                    style="display: none;"
+                >
+                    <div @click="open = false" class="absolute inset-0"></div>
+                    <button @click="open = false" class="absolute top-4 right-4 text-white text-3xl z-50 hover:opacity-75 transition-opacity">&times;</button>
+                    <button
+                        @click.stop="previous()"
+                        x-show="images.length > 1"
+                        :class="{ 'opacity-30 cursor-default': currentIndex === 0 }"
+                        :disabled="currentIndex === 0"
+                        class="absolute left-4 z-50 p-2 bg-white/20 rounded-full hover:bg-white/40 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+
+                    <!-- CONTÊINER DA IMAGEM E BOLINHAS (CORREÇÃO APLICADA AQUI) -->
+                    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center justify-center space-y-4 p-4">
+                        <div class="flex-grow flex items-center justify-center w-full">
+                            <img
+                                :src="images[currentIndex]"
+                                alt="Imagem ampliada"
+                                class="rounded-lg shadow-2xl w-auto h-auto max-w-full max-h-full object-contain"
+                            >
+                        </div>
+                        <div class="flex space-x-3 mt-4 flex-shrink-0" x-show="images.length > 1">
+                            <template x-for="(image, index) in images" :key="index">
+                                <button
+                                    @click.stop="goTo(index)"
+                                    class="h-3 w-3 rounded-full transition"
+                                    :class="{ 'bg-white': currentIndex === index, 'bg-white/40 hover:bg-white/70': currentIndex !== index }"
+                                ></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <button
+                        @click.stop="next()"
+                        x-show="images.length > 1"
+                        :disabled="currentIndex === images.length - 1"
+                        :class="{ 'opacity-30 cursor-default': currentIndex === images.length - 1 }"
+                        class="absolute right-4 z-50 p-2 bg-white/20 rounded-full hover:bg-white/40 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </section>
+                       
+            <!-- SEPARADOR DE SEÇÃO -->
+
+</section> <hr class="my-16 border-t-2 border-gray-200 w-3/4 mx-auto"> <section id="proxima-obra-id"> </section>
+
+            <!-- SEÇÃO DE OBRA 3: COMPLEXO EÓLICO ALTO SERTÃO III -->
+            <section id="obra-complexo-eolico-alto-sertao-iii"
+                class="bg-slate-50"
+                x-data="{
+                    open: false,
+                    currentIndex: 0,
+                    images: [
+                        'imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/01.jpg',
+                        'imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/02.jpg',
+                        'imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/03.jpg',
+                        'imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/04.jpg',
+                        'imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/05.jpg',
+                        'imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/06.jpg'
+                    ],
+                    next() {
+                        if (this.currentIndex < this.images.length - 1) {
+                            this.currentIndex++;
+                        }
+                    },
+                    previous() {
+                        if (this.currentIndex > 0) {
+                            this.currentIndex--;
+                        }
+                    },
+                    goTo(index) {
+                        this.currentIndex = index;
+                    }
+                }"
+            >
+            
+                <div class="container mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="col-span-2 overflow-hidden rounded-lg shadow-lg">
+                                <img @click="open = true; currentIndex = 0" src="imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/01.jpg" alt="Destaque Parque Eólico" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="overflow-hidden rounded-lg shadow-lg">
+                                <img @click="open = true; currentIndex = 1" src="imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/02.jpg" alt="Detalhe turbina eólica" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="overflow-hidden rounded-lg shadow-lg">
+                                <img @click="open = true; currentIndex = 2" src="imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/03.jpg" alt="Construção base eólica" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300">
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" class="border-l-4 border-primary pl-8">
+                        <p class="font-semibold text-primary">RENOVA</p>
+                        <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Complexo Eólico Alto Sertão III</h2>
+                        <div class="mt-6 space-y-4 text-gray-600 text-justify">
+                            <p>Construção do Bloco de Operações com execução das atividades civis, elétricas e montagem eletromecânica das salas de painéis e de operação.</p>
+                        </div>
+                        <div class="mt-8 border-t border-gray-200 pt-6">
+                            <dl class="grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                                <div><dt class="font-medium text-gray-900">Cliente</dt> <dd class="text-gray-600">Renova Energia</dd></div>
+                                <div><dt class="font-medium text-gray-900">Localização</dt> <dd class="text-gray-600">Alto Sertão - BA</dd></div>
+                                <div><dt class="font-medium text-gray-900">Ano</dt> <dd class="text-gray-600">2025</dd></div>
+                                <div><dt class="font-medium text-gray-900">Escopo</dt> <dd class="text-gray-600">Construção do bloco de operação</dd></div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lightbox para esta seção de obra -->
+                <div
+                    x-show="open"
+                    @keydown.escape.window="open = false"
+                    x-transition
+                    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4"
+                    style="display: none;"
+                >
+                    <div @click="open = false" class="absolute inset-0"></div>
+
+                    <button @click="open = false" class="absolute top-4 right-4 text-white text-3xl z-50 hover:opacity-75 transition-opacity">&times;</button>
+
+                    <button
+                        @click.stop="previous()"
+                        x-show="images.length > 1"
+                        :class="{ 'opacity-30 cursor-default': currentIndex === 0 }"
+                        :disabled="currentIndex === 0"
+                        class="absolute left-4 z-50 p-2 bg-white/20 rounded-full hover:bg-white/40 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+
+                    <!-- CONTÊINER DA IMAGEM E BOLINHAS (CORREÇÃO APLICADA AQUI) -->
+                    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center justify-center space-y-4 p-4">
+                        <div class="flex-grow flex items-center justify-center w-full">
+                            <img
+                                :src="images[currentIndex]"
+                                alt="Imagem ampliada"
+                                class="rounded-lg shadow-2xl w-auto h-auto max-w-full max-h-full object-contain"
+                            >
+                        </div>
+                        <div class="flex space-x-3 mt-4 flex-shrink-0" x-show="images.length > 1">
+                            <template x-for="(image, index) in images" :key="index">
+                                <button
+                                    @click.stop="goTo(index)"
+                                    class="h-3 w-3 rounded-full transition"
+                                    :class="{ 'bg-white': currentIndex === index, 'bg-white/40 hover:bg-white/70': currentIndex !== index }"
+                                ></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <button
+                        @click.stop="next()"
+                        x-show="images.length > 1"
+                        :disabled="currentIndex === images.length - 1"
+                        :class="{ 'opacity-30 cursor-default': currentIndex === images.length - 1 }"
+                        class="absolute right-4 z-50 p-2 bg-white/20 rounded-full hover:bg-white/40 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- SEPARADOR DE SEÇÃO -->
+
+</section> <hr class="my-16 border-t-2 border-gray-200 w-3/4 mx-auto"> <section id="proxima-obra-id"> </section>
+
+            <!-- SEÇÃO DE OBRA 4: SUBESTAÇÃO CAETITÉ -->
+            <section id="obra-subestacao-caetite"
+                class="bg-slate-50"
+                x-data="{
+                    open: false,
+                    currentIndex: 0,
+                    images: [
+                        'imagens/obras/04_Subestacao_Caetite/01.jpg',
+                        'imagens/obras/04_Subestacao_Caetite/02.jpg',
+                        'imagens/obras/04_Subestacao_Caetite/03.jpg',
+                        'imagens/obras/04_Subestacao_Caetite/04.jpg',
+                        'imagens/obras/04_Subestacao_Caetite/05.jpg',
+                        'imagens/obras/04_Subestacao_Caetite/06.jpg',
+                        'imagens/obras/04_Subestacao_Caetite/07.jpg',
+                        'imagens/obras/04_Subestacao_Caetite/08.jpg'
+                    ],
+                    next() {
+                        if (this.currentIndex < this.images.length - 1) {
+                            this.currentIndex++;
+                        }
+                    },
+                    previous() {
+                        if (this.currentIndex > 0) {
+                            this.currentIndex--;
+                        }
+                    },
+                    goTo(index) {
+                        this.currentIndex = index;
+                    }
+                }"
+            >
+                <div class="container mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right" class="border-l-4 border-primary pl-8 lg:order-first">
+                        <p class="font-semibold text-primary">IBERDROLA</p>
+                        <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Subestação Caetité</h2>
+                        <div class="mt-6 space-y-4 text-gray-600 text-justify">
+                            <p>Melhoria no projeto de SPDA da subestação, execução de lastro de concreto para regularizar a base, implantação de manilhas, reaterro, recomposição da malha de aterramento, implantação de postes e lançamento de cabos.</p>
+                        </div>
+                        <div class="mt-8 border-t border-gray-200 pt-6">
+                            <dl class="grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                                <div><dt class="font-medium text-gray-900">Cliente</dt> <dd class="text-gray-600">Iberdrola</dd></div>
+                                <div><dt class="font-medium text-gray-900">Localização</dt> <dd class="text-gray-600">Caetité - BA</dd></div>
+                                <div><dt class="font-medium text-gray-900">Ano</dt> <dd class="text-gray-600">2025</dd></div>
+                                <div><dt class="font-medium text-gray-900">Escopo</dt> <dd class="text-gray-600">Melhoria no projeto, lastro, manilhas, implatação de postes e cabos</dd></div>
+                            </dl>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="col-span-2 overflow-hidden rounded-lg shadow-lg">
+                                <img @click="open = true; currentIndex = 0" src="imagens/obras/04_Subestacao_Caetite/01.jpg" alt="Destaque Fazenda Solar" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="overflow-hidden rounded-lg shadow-lg">
+                                <img @click="open = true; currentIndex = 1" src="imagens/obras/04_Subestacao_Caetite/02.jpg" alt="Painéis solares detalhe" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="overflow-hidden rounded-lg shadow-lg">
+                                <img @click="open = true; currentIndex = 2" src="imagens/obras/04_Subestacao_Caetite/03.jpg" alt="Estrutura de montagem" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lightbox para esta seção de obra -->
+                <div
+                    x-show="open"
+                    @keydown.escape.window="open = false"
+                    x-transition
+                    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4"
+                    style="display: none;"
+                >
+                    <div @click="open = false" class="absolute inset-0"></div>
+                    <button @click="open = false" class="absolute top-4 right-4 text-white text-3xl z-50 hover:opacity-75 transition-opacity">&times;</button>
+                    <button
+                        @click.stop="previous()"
+                        x-show="images.length > 1"
+                        :class="{ 'opacity-30 cursor-default': currentIndex === 0 }"
+                        :disabled="currentIndex === 0"
+                        class="absolute left-4 z-50 p-2 bg-white/20 rounded-full hover:bg-white/40 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+
+                    <!-- CONTÊINER DA IMAGEM E BOLINHAS (CORREÇÃO APLICADA AQUI) -->
+                    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center justify-center space-y-4 p-4">
+                        <div class="flex-grow flex items-center justify-center w-full">
+                            <img
+                                :src="images[currentIndex]"
+                                alt="Imagem ampliada"
+                                class="rounded-lg shadow-2xl w-auto h-auto max-w-full max-h-full object-contain"
+                            >
+                        </div>
+                        <div class="flex space-x-3 mt-4 flex-shrink-0" x-show="images.length > 1">
+                            <template x-for="(image, index) in images" :key="index">
+                                <button
+                                    @click.stop="goTo(index)"
+                                    class="h-3 w-3 rounded-full transition"
+                                    :class="{ 'bg-white': currentIndex === index, 'bg-white/40 hover:bg-white/70': currentIndex !== index }"
+                                ></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <button
+                        @click.stop="next()"
+                        x-show="images.length > 1"
+                        :disabled="currentIndex === images.length - 1"
+                        :class="{ 'opacity-30 cursor-default': currentIndex === images.length - 1 }"
+                        class="absolute right-4 z-50 p-2 bg-white/20 rounded-full hover:bg-white/40 transition">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-primary text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <div>
+                    <a href="index.html" class="flex items-center mb-4">
+                        <img src="https://i.imgur.com/avRrluQ.png" alt="Logo do Grupo LM" class="h-10 w-auto">
+                    </a>
+                    <p class="text-gray-400">Desde 1998, construindo o futuro com excelência.</p>
+                </div>
+
+                <div class="lg:ml-16">
+                    <h3 class="text-white font-bold text-lg mb-4">Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Início</a></li>
+                        <li><a href="index.html#about" class="hover:text-white transition-colors">Sobre</a></li>
+                        <li><a href="index.html#services" class="hover:text-white transition-colors">Serviços</a></li>
+                        <li><a href="index.html#projects" class="hover:text-white transition-colors">Projetos</a></li>
+                        <li><a href="index.html#locacao" class="hover:text-white transition-colors">Locação</a></li> 
+                        <li><a href="obras1.html" class="hover:text-white transition-colors">Obras</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Contato</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://wa.me/55779988255980" target="_blank" class="hover:text-white transition-colors">(77) 9 98825-5980</a></li>
+                        <li><a href="mailto:financeiro@grupolm.org" class="hover:text-white transition-colors">financeiro@grupolm.org</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Siga-nos</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/grupolm_" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="https://br.linkedin.com/company/grupo-l-m" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Grupo LM. Todos os direitos reservados.</p>
+                <p class="text-sm mt-1">Sede em Guanambi, BA. Atuação Nacional.</p>
+            </div>
+        </div>
+    </footer>
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <button id="scrollToTopBtn" class="fixed bottom-24 right-6 bg-primary text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
+    <i class="fas fa-arrow-up text-lg"></i>
+</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa a biblioteca de animações ao rolar
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100
+            });
+
+            // Lógica do Cabeçalho com Scroll
+            const navbar = document.querySelector('.navbar');
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Executa uma vez no carregamento para o caso da página carregar rolada
+
+            // Lógica do Menu Mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenuButton) { // Boa prática de segurança
+                const mobileMenuIcon = mobileMenuButton.querySelector('i');
+                mobileMenuButton.addEventListener('click', () => {
+                    const isOpen = mobileMenu.classList.toggle('open');
+                    if(mobileMenuIcon) { // Boa prática de segurança
+                        mobileMenuIcon.className = isOpen ? 'fas fa-times fa-lg' : 'fas fa-bars fa-lg';
+                    }
+                });
+            }
+            
+            // Fecha o menu móvel ao clicar em um link
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    mobileMenuIcon.className = 'fas fa-bars fa-lg';
+                });
+            });
+
+            // --- SCROLL SPY LOGIC START --- (se esta lógica estiver em obras1.html, ajuste os IDs ou remova se não for usada)
+            // Lembre-se que o scroll spy é para a index.html, esta página é a de portfólio.
+            // Se você quer que a navegação do portfólio seja ativa quando rolar, você precisaria de mais seções com IDs aqui.
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-50% 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    // Ajuste o seletor para os links desta página se eles corresponderem aos IDs das seções aqui
+                    const correspondingNavLink = document.querySelector(`.nav-link[href="obras1.html#${id}"]`); // Exemplo: obras1.html#obra-supressao-sondaoeste
+                    const correspondingMobileNavLink = document.querySelector(`#mobile-menu a[href="obras1.html#${id}"]`);
+
+                    // Lógica para desktop links
+                    if (correspondingNavLink) {
+                        if (entry.isIntersecting) {
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            correspondingNavLink.classList.add('active');
+                        }
+                    }
+
+                    // Lógica para mobile links
+                    if (correspondingMobileNavLink) {
+                        if (entry.isIntersecting) {
+                            mobileNavLinks.forEach(link => link.classList.remove('active'));
+                            correspondingMobileNavLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Lógica para definir o link 'Obras' como ativo na barra de navegação
+            // Você pode querer que o link "Obras" no cabeçalho fique ativo quando você estiver em obras1.html
+            // Isso pode ser feito adicionando a classe 'active' ao link de 'obras1.html' na navegação
+            // Exemplo: document.querySelector('.nav-link[href="obras1.html"]').classList.add('active');
+            // Ou, se você já tem ele fixo com 'active' no HTML, não precisa de JS para isso.
+
+            // --- SCROLL SPY LOGIC END ---
+
+
+            // JS para o contador animado (se você for usar o contador nesta página também)
+            // Se o contador 'experience-counter' só existe na index.html, este bloco deve ser movido para lá.
+            // Se ele existe nesta página, garanta que o ID existe.
+            function animateCounter(targetId, start, end, duration) {
+                const counterElement = document.getElementById(targetId);
+                if (!counterElement) return; // Garante que o elemento existe antes de tentar animá-lo
+
+                let current = start;
+                const range = end - start;
+                const increment = end > start ? 1 : -1;
+                const stepTime = Math.abs(Math.floor(duration / range));
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    counterElement.textContent = current + '+';
+                    if (current == end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            // Configurar o Intersection Observer para animar o contador
+            const experienceSection = document.querySelector('#about'); // Assumindo que #about existe nesta página
+            const experienceCounterElement = document.getElementById('experience-counter'); // Assumindo que o ID existe
+            let hasAnimated = false;
+
+            if (experienceSection && experienceCounterElement) {
+                const counterObserver = new IntersectionObserver((entries, observer) => { // Renomeado para counterObserver
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            animateCounter('experience-counter', 0, 11, 2000);
+                            hasAnimated = true;
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0.5
+                });
+                counterObserver.observe(experienceSection);
+            }
+
+
+            // --- Lógica do Botão Voltar ao Topo (AGORA DENTRO DO DOMContentLoaded) ---
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            // APENAS adicione listeners se o botão realmente existir na página
+            if (scrollToTopBtn) {
+                const toggleScrollToTopButton = () => {
+                    const halfwayPoint = document.body.scrollHeight / 2;
+
+                    if (window.scrollY > halfwayPoint) {
+                        scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                        scrollToTopBtn.classList.add('opacity-100', 'visible');
+                    } else {
+                        scrollToTopBtn.classList.remove('opacity-100', 'visible');
+                        scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                    }
+                };
+
+                window.addEventListener('scroll', toggleScrollToTopButton);
+                // Executa uma vez no carregamento para o caso da página carregar rolada
+                toggleScrollToTopButton(); // Chamada direta aqui
+                
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            // --- FIM da Lógica do Botão Voltar ao Topo ---
+        }); // FIM DO DOMContentLoaded
+    </script>
+</body>
+</html>

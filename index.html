@@ -1,0 +1,902 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grupo LM - Excelência em Construção e Energia</title>
+        <meta name="description" content="Grupo LM - Especialistas em construção civil, parques eólicos e solares, subestações de energia e locação de equipamentos. Atuamos em toda a Bahia e Brasil.">
+
+        <link rel="icon" href="https://via.placeholder.com/32x32" type="image/png">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#213761',
+                            secondary: '#ffffff',
+                            dark: '#000000'
+                        },
+                        fontFamily: {
+                            sans: ['Inter', 'sans-serif'],
+                        },
+                    }
+                }
+            }
+        </script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+                overflow-x: hidden;
+                color: #000000;
+                line-height: 1.6;
+                background-color: #ffffff;
+                opacity: 0;
+                transition: opacity 0.8s ease-in-out;
+            }
+
+            body.loaded {
+                opacity: 1;
+            }
+
+            .text-gradient {
+    background: linear-gradient(90deg, white, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    }
+            
+            /* Tipografia Fluida para o Título Principal */
+            .hero-title {
+                font-size: clamp(2.5rem, 6vw, 4rem);
+            }
+
+            .btn-primary {
+                background-color: #213761;
+                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                color: white;
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 24px -6px rgba(33, 55, 97, 0.3);
+            }
+
+            .navbar {
+        /* Estado inicial: fundo transparente, transição suave */
+        background-color: transparent;
+        transition: all 0.4s ease-out;
+    }
+
+        .navbar.scrolled {
+            /* Estado ao rolar: fundo branco, com desfoque e sombra */
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* REGRAS CORRIGIDAS ABAIXO COM '!important' 
+        */
+
+        /* Regras de cor para o texto ao rolar */
+        .navbar.scrolled .nav-brand,
+        .navbar.scrolled .nav-link,
+        .navbar.scrolled .mobile-menu-icon {
+            color: #000000 !important; /* CORRIGIDO: Força a cor preta */
+        }
+
+        /* Ajuste do hover dos links no estado de rolagem */
+        .navbar.scrolled .nav-link:hover {
+            color: #213761 !important; /* CORRIGIDO: Força a cor primária no hover */
+        }
+
+        /* Inverte as cores do logo 'LM' */
+        .navbar.scrolled .logo-circle {
+            background-color: #213761 !important; /* CORRIGIDO: Força o fundo primário */
+            color: #ffffff !important;           /* CORRIGIDO: Força o texto branco */
+        }
+
+        /* Inverte as cores do botão 'Orçamento' */
+        .navbar.scrolled .btn-orcamento {
+            background-color: #213761 !important; /* CORRIGIDO: Força o fundo primário */
+            color: #ffffff !important;           /* CORRIGIDO: Força o texto branco */
+        }
+
+        .navbar.scrolled .btn-orcamento:hover {
+            background-color: #1a2c4f !important; /* CORRIGIDO: Força um tom mais escuro no hover */
+        }
+
+            .hero-overlay {
+                background: linear-gradient(135deg, rgba(33, 55, 97, 0.35) 0%, rgba(26, 44, 79, 0.9) 100%);
+            }
+
+            .service-card {
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                border: 1px solid #e2e8f0;
+            }
+
+            .service-card:hover {
+                transform: translateY(-12px) scale(1.02);
+                box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+                border-color: #213761;
+            }
+
+            .project-overlay {
+                background: linear-gradient(to top, rgba(33, 55, 97, 0.95) 0%, rgba(33, 55, 97, 0) 100%);
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s ease-out;
+            }
+
+            .project-card:hover .project-overlay {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .project-card img {
+                transition: transform 0.4s ease-out;
+            }
+
+            .project-card:hover img {
+                transform: scale(1.05);
+            }
+            
+            .mobile-menu {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out;
+            }
+
+            .mobile-menu.open {
+                max-height: 500px; /* Aumente se necessário */
+            }
+
+            /* Carrossel de Clientes com Animação Infinita */
+            .clients-container {
+                overflow: hidden;
+                -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+                mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            }
+            
+            .clients-slider {
+                display: flex;
+                width: fit-content;
+                animation: slide 180s linear infinite;
+            }
+
+            .client-logo {
+                flex-shrink: 0;
+                width: 180px; /* Largura fixa para cada logo */
+                margin: 0 40px;
+            }
+
+            @keyframes slide {
+                from { transform: translateX(0); }
+                to { transform: translateX(-50%); }
+            }
+
+            .vimeo-background iframe {
+        width: 100vw;
+        height: 56.25vw; /* 16:9 Aspect Ratio */
+        min-height: 100vh;
+        min-width: 177.77vh; /* 16:9 Aspect Ratio */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none; /* Impede que o vídeo seja clicável */
+    }
+
+    /* Adicione este novo estilo no final do seu bloco <style> */
+
+    /* Por padrão, a logo cinza (para fundo branco) fica escondida */
+    .logo-branca {
+        display: block; /* A logo branca aparece por padrão */
+    }
+    .logo-cinza {
+        display: none;  /* A logo cinza fica escondida por padrão */
+    }
+
+    /* Quando o cabeçalho é rolado (fica branco)... */
+    .navbar.scrolled .logo-branca {
+        display: none;  /* Escondemos a logo branca */
+    }
+    .navbar.scrolled .logo-cinza {
+        display: block; /* Mostramos a logo cinza */
+    }
+
+    /* Estilo do link ativo na navegação */
+    .nav-link.active {
+        font-weight: 700; /* Deixa o texto em negrito */
+        border-bottom: 2px solid white; /* Cria a linha branca em baixo */
+    }
+
+    /* Muda a cor da linha quando o cabeçalho fica branco */
+    .navbar.scrolled .nav-link.active {
+        border-bottom-color: #213761; /* Muda a linha para azul escuro */
+    }
+
+    .project-category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1;
+        border-radius: 9999px; /* Efeito de pílula */
+        background-color: #E0E7FF; /* Cor de fundo suave (indigo-100) */
+        color: #3730A3; /* Cor do texto (indigo-800) */
+    }
+
+        </style>
+    </head>
+    <body class="antialiased">
+        <header class="navbar fixed w-full z-50 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center">
+        <img src="logo/logo_branca.png" alt="Logo do Grupo LM" class="logo-branca h-10 w-auto transition-all duration-300">
+
+        <img src="logo/logo_principal.png" alt="Logo do Grupo LM" class="logo-cinza h-10 w-auto transition-all duration-300">
+    </a>
+                
+                <nav class="hidden md:flex items-center space-x-8">
+        <a href="#hero" class="nav-link text-white active">Início</a> <a href="#about" class="nav-link text-white font-medium transition-colors duration-300">Sobre</a>
+        <a href="#services" class="nav-link text-white font-medium transition-colors duration-300">Serviços</a>
+        <a href="#projects" class="nav-link text-white font-medium transition-colors duration-300">Projetos</a>
+        <a href="#locacao" class="nav-link text-white font-medium transition-colors duration-300">Locação</a>
+        <a href="obras1.html" class="nav-link text-white font-medium transition-colors duration-300">Obras</a>
+        <a href="#contact" class="nav-link text-white font-medium transition-colors duration-300">Contato</a>
+        <a href="#contact" class="btn-orcamento bg-white text-primary px-6 py-2 rounded-full font-medium text-sm ml-4 transition-colors duration-300">Orçamento</a>
+    </nav>
+                
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                    <i class="mobile-menu-icon fas fa-bars fa-lg text-white transition-colors duration-300"></i>
+                </button>
+            </div>
+            
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white rounded-lg mt-3">
+        <div class="pt-4 pb-3 space-y-2 text-center">
+            <a href="#hero" class="block px-3 py-2 rounded-md text-base font-bold text-primary bg-gray-100">Início</a> <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Sobre</a>
+            <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Serviços</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Projetos</a>
+            <a href="#locacao" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Locação</a>
+            <a href="obras1.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Obras</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Contato</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Orçamento</a>
+            </div>
+    </div>
+        </div>
+    </header>
+
+        <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden"> <div class="absolute inset-0">
+            <video 
+                autoplay 
+                loop 
+                muted 
+                playsinline 
+                class="w-full h-full object-cover"
+            >
+                <source src="videos/torres_eolicas.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </div>
+        
+        <div class="absolute inset-0 hero-overlay"></div>
+        
+        <div class="relative z-10 px-4 md:px-6 text-center max-w-4xl mx-auto" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                <span class="text-gradient">Excelência</span> em Construção e Energia
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto">
+                Transformando desafios em realizações com inovação, qualidade e compromisso desde 2013.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#services" class="btn-primary px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition">
+                    Nossos Serviços
+                </a>
+                <a href="#contact" class="bg-white px-8 py-3 rounded-full font-semibold text-primary text-lg shadow-lg hover:shadow-xl transition hover:bg-gray-50">
+                    Fale Conosco
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <a href="#about" class="text-white animate-bounce">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+        <section id="about" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="lg:w-1/2" data-aos="fade-right">
+                        <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                            <img src="imagens/imagens_soltas/subestacao_pindai_II.jpg" alt="Equipe do Grupo LM em reunião de planejamento" class="w-full h-auto object-cover">
+                            <div class="absolute -bottom-4 -right-4 bg-primary text-white p-8 rounded-tl-3xl shadow-lg">
+        <div id="experience-counter" class="text-5xl font-bold">0+</div> <div class="text-lg">Anos de Experiência</div>
+    </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
+                        <h2 class="text-4xl md:text-4xl font-bold text-gray-900 mb-6">
+                            <span class="text-primary">Grupo LM</span>: Nossa História
+                        </h2>
+                        <p class="text-lg text-gray-700 text-justify indent-0 mb-0">
+        Construtora fundada em 1998, a AGROHIDRO inicialmente atendeu a demanda de poços artesianos de alta e média vazão, trazendo na bagagem mais de 5.000 poços perfurados e instalados em todo sudoeste baiano, tendo como principais clientes a CODEVASF, CERB, Prefeituras Municipais e produtores rurais.
+    </p>
+    <p class="text-lg text-gray-700 text-justify indent-0 mb-0">
+        Em 2002 se especializou em obras de canais pluviais (mais de 30.000 m executados), reflorestamento de matas ciliares de rios e redes elétricas, além de edificações e locações de equipamentos.
+    </p>
+    <p class="text-lg text-gray-700 text-justify indent-0 mb-0">
+        Em 2013 foi fundada a SERRA GRANDE CONSTRUÇÕES, voltada para atividades ligadas a parques eólicos e linhas de transmissão. A junção dessas duas empresas criou o GRUPO LM, líder regional em obras de diversos seguimentos, atuando com foco em todas as demandas de implantação de parques solares, eólicos e subestações de energia.
+    </p>
+    <br>
+                        <a href="#services" class="btn-primary inline-flex items-center px-8 py-3 rounded-full font-semibold">
+                            Conheça nossos serviços
+                            <i class="fas fa-arrow-right ml-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Nossos Serviços</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Soluções completas e integradas em construção civil e energia para atender às mais altas exigências do mercado.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-primary mb-6"><i class="fas fa-hard-hat fa-3x"></i></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Construção Civil</h3>
+                        <p class="text-gray-600 text-justify">Projetos de infraestrutura e edificações com foco em qualidade, durabilidade e sustentabilidade.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-primary mb-6"><i class="fas fa-charging-station fa-3x"></i></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Montagem de Subestações</h3>
+                        <p class="text-gray-600 text-justify">Expertise na montagem e manutenção de subestações de energia de alta e média tensão.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-primary mb-6"><i class="fas fa-solar-panel fa-3x"></i></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Energia Renovável</h3>
+                        <p class="text-gray-600 text-justify">Implementação completa de parques eólicos e solares com tecnologia de ponta.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-primary mb-6"><i class="fas fa-tools fa-3x"></i></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Manutenção de Parques</h3>
+                        <p class="text-gray-600 text-justify">Manutenção especializada em parques eólicos e solares para máxima eficiência e longevidade.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-primary mb-6"><i class="fas fa-mountain fa-3x"></i></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Terraplanagem</h3>
+                        <p class="text-gray-600 text-justify">Preparação de terrenos com precisão e agilidade para qualquer tipo de projeto de construção.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-primary mb-6"><i class="fas fa-truck-monster fa-3x"></i></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Locação de Equipamentos</h3>
+                        <p class="text-gray-600 text-justify">Frota moderna de equipamentos para atender às suas necessidades com eficiência e segurança.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="bg-slate-50 py-24 sm:py-32">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                    Projetos que Transformam
+                </h2>
+                <p class="mt-6 text-lg leading-8 text-gray-600">
+                    Conheça alguns dos trabalhos que demonstram nossa capacidade técnica e compromisso com a excelência através de soluções inovadoras em construção e energia.
+                </p>
+            </div>
+
+            <div class="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+
+                <div class="group" data-aos="fade-up" data-aos-delay="100">
+                    <a href="obras1.html#obra-supressao-sondaoeste" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white">
+                        <div class="relative overflow-hidden">
+                            <img src="imagens/obras/01_Supressao_Sondaoeste_EDF/02.jpg" alt="Obra de Supressão em Jacobina" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+                        </div>
+                        <div class="mt-6 p-4"> <span class="project-category-tag">Sondaoeste/EDF</span>
+                            <h3 class="mt-4 text-xl font-bold text-gray-900">Supressão</h3>
+                            <p class="mt-2 text-base text-gray-600">Jacobina, Bahia - 2025</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="group" data-aos="fade-up" data-aos-delay="200">
+                    <a href="obras1.html#obra-subestacao-pindai-ii" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white">
+                        <div class="relative overflow-hidden">
+                            <img src="imagens/obras/02_Subestacao_Pindai_II/01.jpg" alt="Obra Subestação Pindaí II" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+                        </div>
+                        <div class="mt-6 p-4"> <span class="project-category-tag">Renova</span>
+                            <h3 class="mt-4 text-xl font-bold text-gray-900">Subestação Pindaí II</h3>
+                            <p class="mt-2 text-base text-gray-600">Pindaí, Bahia - 2025</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="group" data-aos="fade-up" data-aos-delay="300">
+                    <a href="obras1.html#obra-complexo-eolico-alto-sertao-iii" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white">
+                        <div class="relative overflow-hidden">
+                            <img src="imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/01.jpg" alt="Obra Complexo Eólico Alto Sertão III" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
+                        </div>
+                        <div class="mt-6 p-4"> <span class="project-category-tag">Renova</span>
+                            <h3 class="mt-4 text-xl font-bold text-gray-900">Complexo Eólico Alto Sertão III</h3>
+                            <p class="mt-2 text-base text-gray-600">Alto Sertão Bahia - 2025</p>
+                        </div>
+                    </a>
+                </div>
+                </div>
+
+            </div>
+    </section>
+
+    <section id="locacao" class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Locação de Equipamentos</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Precisa de equipamentos de alta performance para sua obra? Fale conosco e solicite um orçamento!
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+                <img src="imagens/equipamentos/motoniveladora.png" alt="Motoniveladora" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Motoniveladora</h3>
+                <p class="text-gray-700 mb-6">Ideal para nivelamento de terrenos, acabamento de estradas e pátios.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Motoniveladora." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+                <img src="imagens/equipamentos/retroescavadeira.png" alt="Retroescavadeira" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Retroescavadeira</h3>
+                <p class="text-gray-700 mb-6">Versátil para escavações, aterros e carregamento de materiais.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Retroescavadeira." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="300">
+                <img src="imagens_equipamentos/pa_carregadeira.jpg" alt="Pá Carregadeira" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Pá Carregadeira</h3>
+                <p class="text-gray-700 mb-6">Eficiente para carregar caminhões, mover grandes volumes de material e nivelar.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Pá Carregadeira." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="100">
+                <img src="imagens_equipamentos/escavadeira_hidraulica.jpg" alt="Escavadeira Hidráulica" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Escavadeira Hidráulica</h3>
+                <p class="text-gray-700 mb-6">Potente para grandes escavações, demolições e movimentação de terra.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Escavadeira Hidráulica." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="200">
+                <img src="imagens/equipamentos/rolo_compactador.png" alt="Rolo Compactador" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Rolo Compactador</h3>
+                <p class="text-gray-700 mb-6">Essencial para compactação de solos, asfalto e bases em diversas obras.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Rolo Compactador." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="300">
+                <img src="imagens_equipamentos/caminhao_munck.jpg" alt="Caminhão Munck" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Caminhão Munck</h3>
+                <p class="text-gray-700 mb-6">Utilizado para movimentação, carga e descarga de materiais pesados e içamento.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Caminhão Munck." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="100">
+                <img src="imagens_equipamentos/caminhao_basculante.jpg" alt="Caminhão Basculante" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Caminhão Basculante</h3>
+                <p class="text-gray-700 mb-6">Perfeito para transporte de areia, brita, terra e entulho com descarga rápida.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Caminhão Basculante." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="200">
+                <img src="imagens_equipamentos/caminhao_prancha.jpg" alt="Caminhão Prancha" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Caminhão Prancha</h3>
+                <p class="text-gray-700 mb-6">Ideal para transporte de máquinas pesadas e equipamentos de grande porte.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Caminhão Prancha." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+
+            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+                <img src="imagens/equipamentos/container.jpeg" alt="Container" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Container</h3>
+                <p class="text-gray-700 mb-6">Solução prática para armazenamento seguro no canteiro de obras.</p>
+                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Container." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
+                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section id="clients" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Clientes e Parceiros</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Construímos relações de confiança com grandes nomes do mercado.
+                    </p>
+                </div>
+                
+                <div class="clients-container" data-aos="fade-up">
+                    <div class="clients-slider">
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/01.jpg" alt="Logo Cliente 1" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/ABB.jpg" alt="Logo Parceiro 2" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/AES.png" alt="Logo Cliente 3" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/AFAP.jpg" alt="Logo Parceiro4" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/BROOKFIELD.jpg" alt="Logo Cliente 5" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/BW.png" alt="Logo Parceiro 6" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/CHESF.jpg" alt="Logo Parceiro 7" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/EDF.png" alt="Logo Parceiro 8" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/ENGELMIG.jpg" alt="Logo Parceiro 9" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/EQUATORIAL.png" alt="Logo Parceiro 10" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/EUROGRUAS.jpg" alt="Logo Parceiro 11" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/GAMESA.jpg" alt="Logo Parceiro 12" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/GBIFRIGORIFICO.jpg" alt="Logo Parceiro 13" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/GE.jpg" alt="Logo Parceiro 14" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/GPEXPAN.jpg" alt="Logo Parceiro 15" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/IBERDROLA.jpg" alt="Logo Parceiro 16" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/LEON.jpg" alt="Logo Parceiro 17" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/LOMACON.jpg" alt="Logo Parceiro 18" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/MERCURIUS.jpg" alt="Logo Parceiro 19" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/PALAZZO.jpg" alt="Logo Parceiro 20" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/PHILLIS.jpg" alt="Logo Parceiro 21" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/PLANERGY.jpg" alt="Logo Parceiro 22" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/QUEIROZ.jpg" alt="Logo Parceiro 23" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/RENOVA.jpg" alt="Logo Parceiro 24" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SADESUL.jpg" alt="Logo Parceiro 25" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SNEF.jpg" alt="Logo Parceiro 26" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+
+
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/01.jpg" alt="Logo Cliente 1" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/ABB.jpg" alt="Logo Cliente 2" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/AES.png" alt="Logo Cliente 3" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/AFAP.jpg" alt="Logo Cliente 4" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/BROOKFIELD.jpg" alt="Logo Cliente 5" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/BW.png" alt="Logo Cliente 6" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/CHESF.jpg" alt="Logo Cliente 7" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/EDF.png" alt="Logo Cliente 8" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/ENGELMIG.jpg" alt="Logo Cliente 9" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/EQUATORIAL.png" alt="Logo Cliente 10" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/EUROGRUAS.jpg" alt="Logo Cliente 11" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/GAMESA.jpg" alt="Logo Cliente 12" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/GBIFRIGORIFICO.jpg" alt="Logo Cliente 13" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/GE.jpg" alt="Logo Cliente 14" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/GPEXPAN.jpg" alt="Logo Cliente 15" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/IBERDROLA.jpg" alt="Logo Cliente 16" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/LEON.jpg" alt="Logo Cliente 17" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/LOMACON.jpg" alt="Logo Cliente 18" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/MERCURIUS.jpg" alt="Logo Cliente 19" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/PALAZZO.jpg" alt="Logo Cliente 20" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/PHILLIS.jpg" alt="Logo Cliente 21" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/PLANERGY.jpg" alt="Logo Cliente 22" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/QUEIROZ.jpg" alt="Logo Cliente 23" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/RENOVA.jpg" alt="Logo Cliente 24" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SADESUL.jpg" alt="Logo Cliente 25" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SNEF.jpg" alt="Logo Cliente 26" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Vamos Juntos</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Nossa equipe está pronta para entender seu projeto e oferecer a melhor solução. Entre em contato conosco.
+                    </p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto bg-gray-50 p-8 sm:p-12 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="text-primary mt-1"><i class="fas fa-phone-alt fa-lg"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Telefone</h4>
+                                    <p class="text-gray-600">(77) 3451-2103</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="text-primary mt-1"><i class="fab fa-whatsapp fa-lg"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">WhatsApp</h4>
+                                    <p class="text-gray-600">(71) 9 8143-1000</p>
+                                    <p class="text-gray-600">Locação: (77) 9 8825-5980</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="text-primary mt-1"><i class="fas fa-envelope fa-lg"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Email</h4>
+                                    <p class="text-gray-600">financeiro@grupolm.org</p>
+                                    <p class="text-gray-600">luiz@grupolm.org</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="text-primary mt-1"><i class="fas fa-map-marker-alt fa-lg"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Endereço</h4>
+                                    <p class="text-gray-600 text-justify">Av. Barão do Rio Branco, nº 1605 B, Bairro São Francisco, Guanambi - BA, CEP: 46.430-000</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="text-primary mt-1"><i class="fas fa-clock fa-lg"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Horário</h4>
+                                    <p class="text-gray-600">Seg a Sex: 8h às 12h e 14h às 18h</p>
+                                    <p class="text-gray-600">Sáb e Dom: Fechado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10 text-center">
+                        <a href="https://wa.me/5577988255980?text=Oi!%20Vi%20o%20site%20do%20Grupo%20LM%20e%20gostaria%20de%20um%20orçamento." target="_blank" class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-lg">
+                            <i class="fab fa-whatsapp fa-lg"></i> Iniciar Conversa no WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-primary text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <a href="#" class="flex items-center mb-4">
+    <img src="https://i.imgur.com/avRrluQ.png" alt="Logo do Grupo LM" class="h-10 w-auto">
+</a>
+                    <p class="text-gray-400">Desde 1998, construindo o futuro com excelência.</p>
+                </div>
+                <div class="lg:ml-16">
+                    <h3 class="text-white font-bold text-lg mb-4">Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="hover:text-white transition-colors">Início</a></li> 
+                        <li><a href="#about" class="hover:text-white transition-colors">Sobre</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Serviços</a></li>
+                        <li><a href="#projects" class="hover:text-white transition-colors">Projetos</a></li>
+                        <li><a href="#locacao" class="hover:text-white transition-colors">Locação</a></li>  
+                        <li><a href="obras1.html" class="hover:text-white transition-colors">Obras</a></li>
+                    </ul>
+                </div>
+                <div>
+                    
+                    <h3 class="text-white font-bold text-lg mb-4">Contato</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://wa.me/55779988255980?text=Oi!%20Vi%20o%20site%20do%20Grupo%20LM%20e%20gostaria%20de%20um%20orçamento." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">(77) 9 98825-5980</a></li>
+                        <li><a href="mailto:financeiro@grupolm.org" class="hover:text-white transition-colors">financeiro@grupolm.org</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">Siga-nos</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/grupolm_" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="https://br.linkedin.com/company/grupo-l-m" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Grupo LM. Todos os direitos reservados.</p>
+                <p class="text-sm mt-1">Sede em Guanambi, BA. Atuação Nacional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <button id="scrollToTopBtn" class="fixed bottom-24 right-6 bg-primary text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
+        <i class="fas fa-arrow-up text-lg"></i>
+    </button>
+
+    <script>
+        // O seu listener DOMContentLoaded principal
+        document.addEventListener('DOMContentLoaded', () => {
+            // Adiciona a classe 'loaded' ao body quando o DOM estiver pronto
+            document.body.classList.add('loaded');
+
+            // Inicializa AOS (Animate On Scroll)
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                offset: 50 // Inicia a animação um pouco antes do elemento aparecer
+            });
+            
+            // Efeito de scroll na barra de navegação
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Menu móvel
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = mobileMenuButton.querySelector('i');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('open');
+                mobileMenuIcon.className = isOpen ? 'fas fa-times fa-lg' : 'fas fa-bars fa-lg';
+            });
+            
+            // Fecha o menu móvel ao clicar em um link
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    mobileMenuIcon.className = 'fas fa-bars fa-lg';
+                });
+            });
+
+            // --- SCROLL SPY LOGIC START ---
+            const sections = document.querySelectorAll('section[id]'); // Selects all sections with an ID
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '-50% 0px -50% 0px', // When the middle of the section crosses the middle of the viewport
+                threshold: 0 // As soon as any part of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    const correspondingNavLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    const correspondingMobileNavLink = document.querySelector(`#mobile-menu a[href="#${id}"]`);
+
+                    if (correspondingNavLink) { // Check if a corresponding desktop nav link exists
+                        if (entry.isIntersecting) {
+                            // Remove active from all and add to the current one
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            correspondingNavLink.classList.add('active');
+                        }
+                    }
+
+                    if (correspondingMobileNavLink) { // Check if a corresponding mobile nav link exists
+                        if (entry.isIntersecting) {
+                            mobileNavLinks.forEach(link => link.classList.remove('active'));
+                            correspondingMobileNavLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe each section
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Handle initial load to set the active link for the top section if visible
+            const firstSection = document.getElementById('hero');
+            if (firstSection) {
+                const rect = firstSection.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    document.querySelector('.nav-link[href="#hero"]').classList.add('active');
+                    mobileNavLinks.forEach(link => link.classList.remove('active'));
+                    document.querySelector('#mobile-menu a[href="#hero"]').classList.add('active');
+                }
+            }
+            // --- SCROLL SPY LOGIC END ---
+
+
+            // Lógica para animar o contador (Anos de Experiência)
+            function animateCounter(targetId, start, end, duration) {
+                const counterElement = document.getElementById(targetId);
+                if (!counterElement) return;
+
+                let current = start;
+                const range = end - start;
+                const increment = end > start ? 1 : -1;
+                const stepTime = Math.abs(Math.floor(duration / range));
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    counterElement.textContent = current + '+';
+                    if (current == end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            // Configurar o Intersection Observer para animar o contador
+            const experienceSection = document.querySelector('#about'); // A seção 'Sobre'
+            const experienceCounterElement = document.getElementById('experience-counter');
+            let hasAnimated = false;
+
+            if (experienceSection && experienceCounterElement) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            animateCounter('experience-counter', 0, 11, 2000);
+                            hasAnimated = true;
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0.5
+                });
+                observer.observe(experienceSection);
+            }
+
+            // --- Lógica do Botão Voltar ao Topo ---
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            if (scrollToTopBtn) { // Verifica se o botão existe antes de adicionar listeners
+                const toggleScrollToTopButton = () => {
+                    // Calcula 50% da altura da página para determinar o ponto de exibição
+                    const halfwayPoint = document.body.scrollHeight / 2;
+
+                    if (window.scrollY > halfwayPoint) {
+                        scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                        scrollToTopBtn.classList.add('opacity-100', 'visible');
+                    } else {
+                        scrollToTopBtn.classList.remove('opacity-100', 'visible');
+                        scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                    }
+                };
+
+                window.addEventListener('scroll', toggleScrollToTopButton);
+                // Executa a função uma vez no carregamento da página, caso o usuário já esteja abaixo da metade
+                toggleScrollToTopButton();
+                
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            // --- FIM da Lógica do Botão Voltar ao Topo ---
+
+        }); // FIM DO DOMContentLoaded principal
+    </script>
+</body>
+</html>
