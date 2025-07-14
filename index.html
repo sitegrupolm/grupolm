@@ -6,7 +6,7 @@
         <title>Grupo LM - Excelência em Construção e Energia</title>
         <meta name="description" content="Grupo LM - Especialistas em construção civil, parques eólicos e solares, subestações de energia e locação de equipamentos. Atuamos em toda a Bahia e Brasil.">
 
-        <link rel="icon" href="https://via.placeholder.com/32x32" type="image/png">
+        <link rel="icon" href="logo/logo_favicon.png" type="image/png">
 
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -238,9 +238,51 @@
         color: #3730A3; /* Cor do texto (indigo-800) */
     }
 
+
+/* --- Preloader Styles --- */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #213761; /* Cor primária do seu tema */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Garante que fique acima de tudo */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+.preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    border: 5px solid rgba(255, 255, 255, 0.2); /* Aro transparente branco */
+    border-top: 5px solid #ffffff; /* Aro branco que gira */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
         </style>
     </head>
     <body class="antialiased">
+
+        <div id="preloader" class="preloader">
+        <div class="spinner"></div>
+    </div>
+
         <header class="navbar fixed w-full z-50 py-4">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center">
@@ -443,7 +485,7 @@
                         </div>
                         <div class="mt-6 p-4"> <span class="project-category-tag">Renova</span>
                             <h3 class="mt-4 text-xl font-bold text-gray-900">Complexo Eólico Alto Sertão III</h3>
-                            <p class="mt-2 text-base text-gray-600">Alto Sertão Bahia - 2025</p>
+                            <p class="mt-2 text-base text-gray-600">Alto Sertão, Bahia - 2025</p>
                         </div>
                     </a>
                 </div>
@@ -582,7 +624,7 @@
                         <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/QUEIROZ.jpg" alt="Logo Parceiro 23" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
                         <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/RENOVA.jpg" alt="Logo Parceiro 24" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
                         <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SADESUL.jpg" alt="Logo Parceiro 25" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SNEF.jpg" alt="Logo Parceiro 26" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SNEFBRASIL.jpg" alt="Logo Parceiro 26" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
 
 
                         <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/01.jpg" alt="Logo Cliente 1" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
@@ -610,7 +652,7 @@
                         <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/QUEIROZ.jpg" alt="Logo Cliente 23" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
                         <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/RENOVA.jpg" alt="Logo Cliente 24" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
                         <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SADESUL.jpg" alt="Logo Cliente 25" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SNEF.jpg" alt="Logo Cliente 26" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+                        <div class="client-logo flex items-center justify-center"><img src="logo/logo_cliente/SNEFBRASIL.jpg" alt="Logo Cliente 26" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
 
                     </div>
                 </div>
@@ -685,7 +727,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
                     <a href="#" class="flex items-center mb-4">
-    <img src="https://i.imgur.com/avRrluQ.png" alt="Logo do Grupo LM" class="h-10 w-auto">
+    <img src="logo/logo_branca.png" alt="Logo do Grupo LM" class="h-10 w-auto">
 </a>
                     <p class="text-gray-400">Desde 1998, construindo o futuro com excelência.</p>
                 </div>
@@ -698,23 +740,24 @@
                         <li><a href="#projects" class="hover:text-white transition-colors">Projetos</a></li>
                         <li><a href="#locacao" class="hover:text-white transition-colors">Locação</a></li>  
                         <li><a href="obras1.html" class="hover:text-white transition-colors">Obras</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contato</a></li>
                     </ul>
                 </div>
                 <div>
                     
                     <h3 class="text-white font-bold text-lg mb-4">Contato</h3>
                     <ul class="space-y-2">
-                        <li><a href="https://wa.me/55779988255980?text=Oi!%20Vi%20o%20site%20do%20Grupo%20LM%20e%20gostaria%20de%20um%20orçamento." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">(77) 9 98825-5980</a></li>
+                        <li><a href="https://wa.me/5577988255980?text=Oi!%20Vi%20o%20site%20do%20Grupo%20LM%20e%20gostaria%20de%20um%20orçamento." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">(77) 9 98825-5980</a></li>
                         <li><a href="mailto:financeiro@grupolm.org" class="hover:text-white transition-colors">financeiro@grupolm.org</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-white font-bold text-lg mb-4">Siga-nos</h3>
                     <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/grupolm_" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
-                        <a href="https://br.linkedin.com/company/grupo-l-m" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-facebook-f"></i></a>
-                    </div>
+    <a href="https://www.instagram.com/grupolm_" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
+    <a href="https://br.linkedin.com/company/grupo-l-m" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.facebook.com/grupolm.org" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-facebook-f"></i></a>
+</div>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
@@ -734,169 +777,179 @@
     <script>
         // O seu listener DOMContentLoaded principal
         document.addEventListener('DOMContentLoaded', () => {
-            // Adiciona a classe 'loaded' ao body quando o DOM estiver pronto
-            document.body.classList.add('loaded');
+    // Inicializa AOS (Animate On Scroll)
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 50 // Inicia a animação um pouco antes do elemento aparecer
+    });
+    
+    // Efeito de scroll na barra de navegação
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // Menu móvel
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuIcon = mobileMenuButton.querySelector('i');
+    
+    mobileMenuButton.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        mobileMenuIcon.className = isOpen ? 'fas fa-times fa-lg' : 'fas fa-bars fa-lg';
+    });
+    
+    // Fecha o menu móvel ao clicar em um link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            mobileMenuIcon.className = 'fas fa-bars fa-lg';
+        });
+    });
 
-            // Inicializa AOS (Animate On Scroll)
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                offset: 50 // Inicia a animação um pouco antes do elemento aparecer
-            });
-            
-            // Efeito de scroll na barra de navegação
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-            
-            // Menu móvel
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuIcon = mobileMenuButton.querySelector('i');
-            
-            mobileMenuButton.addEventListener('click', () => {
-                const isOpen = mobileMenu.classList.toggle('open');
-                mobileMenuIcon.className = isOpen ? 'fas fa-times fa-lg' : 'fas fa-bars fa-lg';
-            });
-            
-            // Fecha o menu móvel ao clicar em um link
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('open');
-                    mobileMenuIcon.className = 'fas fa-bars fa-lg';
-                });
-            });
+    // --- SCROLL SPY LOGIC START ---
+    const sections = document.querySelectorAll('section[id]'); // Selects all sections with an ID
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
 
-            // --- SCROLL SPY LOGIC START ---
-            const sections = document.querySelectorAll('section[id]'); // Selects all sections with an ID
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '-50% 0px -50% 0px', // When the middle of the section crosses the middle of the viewport
+        threshold: 0 // As soon as any part of the section is visible
+    };
 
-            const observerOptions = {
-                root: null, // viewport
-                rootMargin: '-50% 0px -50% 0px', // When the middle of the section crosses the middle of the viewport
-                threshold: 0 // As soon as any part of the section is visible
-            };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const id = entry.target.id;
+            const correspondingNavLink = document.querySelector(`.nav-link[href="#${id}"]`);
+            const correspondingMobileNavLink = document.querySelector(`#mobile-menu a[href="#${id}"]`);
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const id = entry.target.id;
-                    const correspondingNavLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                    const correspondingMobileNavLink = document.querySelector(`#mobile-menu a[href="#${id}"]`);
-
-                    if (correspondingNavLink) { // Check if a corresponding desktop nav link exists
-                        if (entry.isIntersecting) {
-                            // Remove active from all and add to the current one
-                            navLinks.forEach(link => link.classList.remove('active'));
-                            correspondingNavLink.classList.add('active');
-                        }
-                    }
-
-                    if (correspondingMobileNavLink) { // Check if a corresponding mobile nav link exists
-                        if (entry.isIntersecting) {
-                            mobileNavLinks.forEach(link => link.classList.remove('active'));
-                            correspondingMobileNavLink.classList.add('active');
-                        }
-                    }
-                });
-            }, observerOptions);
-
-            // Observe each section
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-
-            // Handle initial load to set the active link for the top section if visible
-            const firstSection = document.getElementById('hero');
-            if (firstSection) {
-                const rect = firstSection.getBoundingClientRect();
-                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            if (correspondingNavLink) { // Check if a corresponding desktop nav link exists
+                if (entry.isIntersecting) {
+                    // Remove active from all and add to the current one
                     navLinks.forEach(link => link.classList.remove('active'));
-                    document.querySelector('.nav-link[href="#hero"]').classList.add('active');
-                    mobileNavLinks.forEach(link => link.classList.remove('active'));
-                    document.querySelector('#mobile-menu a[href="#hero"]').classList.add('active');
+                    correspondingNavLink.classList.add('active');
                 }
             }
-            // --- SCROLL SPY LOGIC END ---
 
-
-            // Lógica para animar o contador (Anos de Experiência)
-            function animateCounter(targetId, start, end, duration) {
-                const counterElement = document.getElementById(targetId);
-                if (!counterElement) return;
-
-                let current = start;
-                const range = end - start;
-                const increment = end > start ? 1 : -1;
-                const stepTime = Math.abs(Math.floor(duration / range));
-
-                const timer = setInterval(() => {
-                    current += increment;
-                    counterElement.textContent = current + '+';
-                    if (current == end) {
-                        clearInterval(timer);
-                    }
-                }, stepTime);
+            if (correspondingMobileNavLink) { // Check if a corresponding mobile nav link exists
+                if (entry.isIntersecting) {
+                    mobileNavLinks.forEach(link => link.classList.remove('active'));
+                    correspondingMobileNavLink.classList.add('active');
+                }
             }
+        });
+    }, observerOptions);
 
-            // Configurar o Intersection Observer para animar o contador
-            const experienceSection = document.querySelector('#about'); // A seção 'Sobre'
-            const experienceCounterElement = document.getElementById('experience-counter');
-            let hasAnimated = false;
+    // Observe each section
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 
-            if (experienceSection && experienceCounterElement) {
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !hasAnimated) {
-                            animateCounter('experience-counter', 0, 11, 2000);
-                            hasAnimated = true;
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    root: null,
-                    threshold: 0.5
-                });
-                observer.observe(experienceSection);
+    // Handle initial load to set the active link for the top section if visible
+    const firstSection = document.getElementById('hero');
+    if (firstSection) {
+        const rect = firstSection.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.querySelector('.nav-link[href="#hero"]').classList.add('active');
+            mobileNavLinks.forEach(link => link.classList.remove('active'));
+            document.querySelector('#mobile-menu a[href="#hero"]').classList.add('active');
+        }
+    }
+    // --- SCROLL SPY LOGIC END ---
+
+
+    // Lógica para animar o contador (Anos de Experiência)
+    function animateCounter(targetId, start, end, duration) {
+        const counterElement = document.getElementById(targetId);
+        if (!counterElement) return;
+
+        let current = start;
+        const range = end - start;
+        const increment = end > start ? 1 : -1;
+        const stepTime = Math.abs(Math.floor(duration / range));
+
+        const timer = setInterval(() => {
+            current += increment;
+            counterElement.textContent = current + '+';
+            if (current == end) {
+                clearInterval(timer);
             }
+        }, stepTime);
+    }
 
-            // --- Lógica do Botão Voltar ao Topo ---
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    // Configurar o Intersection Observer para animar o contador
+    const experienceSection = document.querySelector('#about'); // A seção 'Sobre'
+    const experienceCounterElement = document.getElementById('experience-counter');
+    let hasAnimated = false;
 
-            if (scrollToTopBtn) { // Verifica se o botão existe antes de adicionar listeners
-                const toggleScrollToTopButton = () => {
-                    // Calcula 50% da altura da página para determinar o ponto de exibição
-                    const halfwayPoint = document.body.scrollHeight / 2;
+    if (experienceSection && experienceCounterElement) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    animateCounter('experience-counter', 0, 11, 2000);
+                    hasAnimated = true;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.5
+        });
+        observer.observe(experienceSection);
+    }
 
-                    if (window.scrollY > halfwayPoint) {
-                        scrollToTopBtn.classList.remove('opacity-0', 'invisible');
-                        scrollToTopBtn.classList.add('opacity-100', 'visible');
-                    } else {
-                        scrollToTopBtn.classList.remove('opacity-100', 'visible');
-                        scrollToTopBtn.classList.add('opacity-0', 'invisible');
-                    }
-                };
+    // --- Lógica do Botão Voltar ao Topo ---
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
-                window.addEventListener('scroll', toggleScrollToTopButton);
-                // Executa a função uma vez no carregamento da página, caso o usuário já esteja abaixo da metade
-                toggleScrollToTopButton();
-                
-                scrollToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
+    if (scrollToTopBtn) { // Verifica se o botão existe antes de adicionar listeners
+        const toggleScrollToTopButton = () => {
+            // Calcula 50% da altura da página para determinar o ponto de exibição
+            const halfwayPoint = document.body.scrollHeight / 2;
+
+            if (window.scrollY > halfwayPoint) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+scrollToTopBtn.classList.add('opacity-0', 'invisible'); // Corrigido 'ToP' para 'Top'
             }
-            // --- FIM da Lógica do Botão Voltar ao Topo ---
+        };
 
-        }); // FIM DO DOMContentLoaded principal
+        window.addEventListener('scroll', toggleScrollToTopButton);
+        // Executa a função uma vez no carregamento da página, caso o usuário já esteja abaixo da metade
+        toggleScrollToTopButton();
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+}); // FIM DO DOMContentLoaded principal
+
+// Novo script para esconder o preloader quando a página estiver totalmente carregada
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('fade-out');
+        // Opcional: remover o preloader do DOM após a transição para liberar recursos
+        setTimeout(() => {
+            preloader.remove();
+        }, 600); // Deve ser igual à duração da transição no CSS
+    }
+    // Adiciona a classe 'loaded' ao body aqui também, se ainda precisar para outras transições
+    document.body.classList.add('loaded');
+}); 
     </script>
 </body>
 </html>
