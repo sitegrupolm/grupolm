@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular parcela de centro de custo - Grupo LM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --title-color: #213761;
+            --background-color: #f4f7fa;
+            --container-bg: #ffffff;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --success-color: #4CAF50;
+            --danger-color: #f44336;
+            --info-color: #2196F3;
+            --undo-color: #ff9800;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            color: var(--title-color);
+            margin: 0;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        header .datetime {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            color: #555;
+            text-align: right;
+            min-width: 150px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+        }
+
+        .buttons-group {
+            display: flex;
+            gap: 10px;
+            align-self: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-add {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-clear {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .btn-undo {
+            background-color: var(--undo-color);
+            color: white;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        tr.new-row-animation {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        td input[type="text"],
+        td input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        td input[type="text"]:focus,
+        td input[type="number"]:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .parcela-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .valor-parcela {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .btn-copy {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: #555;
+            padding: 5px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.2s ease;
+        }
+
+        .btn-copy:hover {
+            background-color: #e9ecef;
+            border-color: #adb5bd;
+        }
+        
+        .feedback-bubble {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+            pointer-events: none;
+            font-size: 0.95em;
+        }
+        
+        .feedback-bubble.copy { background-color: var(--success-color); }
+        .feedback-bubble.clear { background-color: var(--info-color); }
+
+        .feedback-bubble.show {
+            opacity: 1;
+            transform: translate(-50%, -10px);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+                order: -1; 
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .buttons-group {
+                justify-content: stretch;
+            }
+
+            .buttons-group .btn {
+                flex-grow: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://i.imgur.com/kQj43tl.png" alt="Logotipo Grupo LM">
+            </div>
+            <h1>Calcular parcela de centro de custo - Grupo LM</h1>
+            <div id="datetime" class="datetime"></div>
+        </header>
+
+        <div class="controls">
+            <div class="input-group">
+                <label for="valorParcelaGlobal">Valor da Parcela</label>
+                <input type="number" id="valorParcelaGlobal" placeholder="Ex: 12">
+            </div>
+            <div class="buttons-group">
+                <button id="desfazerBtn" class="btn btn-undo" style="display: none;">Desfazer</button>
+                <button id="limparDados" class="btn btn-clear">Limpar Dados</button>
+                <button id="adicionarLinha" class="btn btn-add">Adicionar Linha</button>
+            </div>
+        </div>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Centro de Custo</th>
+                        <th style="width: 150px;">Qtd de Parcelas</th>
+                        <th style="width: 200px;">Valor Total</th>
+                        <th style="width: 220px;">Valor da Parcela</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaCorpo">
+                    <!-- Linhas serão inseridas aqui via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="copyFeedback" class="feedback-bubble copy">Valor copiado!</div>
+    <div id="clearFeedback" class="feedback-bubble clear">Tabela limpa!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabelaCorpo = document.getElementById('tabelaCorpo');
+            const adicionarLinhaBtn = document.getElementById('adicionarLinha');
+            const limparDadosBtn = document.getElementById('limparDados');
+            const desfazerBtn = document.getElementById('desfazerBtn');
+            const valorParcelaGlobalInput = document.getElementById('valorParcelaGlobal');
+            const datetimeDiv = document.getElementById('datetime');
+            
+            let calculationTimeout;
+            let rowCounter = 0;
+            let lastClearedState = { html: null, globalValue: null };
+
+            // --- Funções de Data e Hora ---
+            function updateDateTime() {
+                const now = new Date();
+                const optionsDate = { day: '2-digit', month: '2-digit', year: 'numeric' };
+                const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const formattedDate = now.toLocaleDateString('pt-BR', optionsDate);
+                const formattedTime = now.toLocaleTimeString('pt-BR', optionsTime);
+                datetimeDiv.innerHTML = `${formattedDate}<br>${formattedTime}`;
+            }
+
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
+
+            // --- Funções de Feedback (Alertas) ---
+            function showFeedback(type) {
+                const feedbackDiv = document.getElementById(`${type}Feedback`);
+                feedbackDiv.classList.add('show');
+                setTimeout(() => {
+                    feedbackDiv.classList.remove('show');
+                }, 2500);
+            }
+
+            // --- Funções da Tabela ---
+            function createRow() {
+                rowCounter++;
+                const tr = document.createElement('tr');
+                tr.id = `row-${rowCounter}`;
+                // Placeholders atualizados conforme solicitado
+                tr.innerHTML = `
+                    <td><input type="text" class="centro-custo" placeholder="Nome do centro de custo"></td>
+                    <td><input type="number" class="qtd-parcelas" placeholder="Ex: 12"></td>
+                    <td><input type="number" class="valor-total" placeholder="Ex: 100"></td>
+                    <td>
+                        <div class="parcela-container">
+                            <span class="valor-parcela">R$ 0,00</span>
+                            <button class="btn-copy">Copiar</button>
+                        </div>
+                    </td>
+                `;
+                tabelaCorpo.appendChild(tr);
+                tr.classList.add('new-row-animation');
+                tr.addEventListener('animationend', () => {
+                    tr.classList.remove('new-row-animation');
+                });
+                return tr;
+            }
+
+            function calculateParcela(row) {
+                const qtdParcelasInput = row.querySelector('.qtd-parcelas');
+                const valorTotalInput = row.querySelector('.valor-total');
+                const valorParcelaSpan = row.querySelector('.valor-parcela');
+
+                const qtdParcelas = parseFloat(qtdParcelasInput.value) || 0;
+                const valorTotal = parseFloat(valorTotalInput.value) || 0;
+
+                if (qtdParcelas > 0 && valorTotal > 0) {
+                    const parcela = valorTotal / qtdParcelas;
+                    valorParcelaSpan.textContent = `R$ ${parcela.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                } else {
+                    valorParcelaSpan.textContent = 'R$ 0,00';
+                }
+            }
+
+            function initializeRows(count) {
+                for (let i = 0; i < count; i++) {
+                    createRow();
+                }
+            }
+            
+            function updateInputAttributes() {
+                tabelaCorpo.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+                    input.setAttribute('value', input.value);
+                });
+            }
+
+            function limparDados() {
+                updateInputAttributes();
+                lastClearedState.html = tabelaCorpo.innerHTML;
+                lastClearedState.globalValue = valorParcelaGlobalInput.value;
+
+                tabelaCorpo.innerHTML = '';
+                rowCounter = 0;
+                initializeRows(10);
+                valorParcelaGlobalInput.value = '';
+                
+                showFeedback('clear');
+                desfazerBtn.style.display = 'inline-block';
+            }
+            
+            function desfazerLimpeza() {
+                if (lastClearedState.html) {
+                    tabelaCorpo.innerHTML = lastClearedState.html;
+                    valorParcelaGlobalInput.value = lastClearedState.globalValue;
+                    
+                    lastClearedState = { html: null, globalValue: null };
+                    desfazerBtn.style.display = 'none';
+                }
+            }
+
+            // --- Event Listeners ---
+            adicionarLinhaBtn.addEventListener('click', createRow);
+            limparDadosBtn.addEventListener('click', limparDados);
+            desfazerBtn.addEventListener('click', desfazerLimpeza);
+
+            valorParcelaGlobalInput.addEventListener('input', function() {
+                const valorGlobal = this.value;
+                document.querySelectorAll('.qtd-parcelas').forEach(input => {
+                    input.value = valorGlobal;
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                });
+            });
+
+            tabelaCorpo.addEventListener('input', function(e) {
+                if (e.target.classList.contains('qtd-parcelas') || e.target.classList.contains('valor-total')) {
+                    const row = e.target.closest('tr');
+                    clearTimeout(calculationTimeout);
+                    calculationTimeout = setTimeout(() => calculateParcela(row), 300);
+                }
+            });
+            
+            tabelaCorpo.addEventListener('click', function(e) {
+                if (e.target.classList.contains('btn-copy')) {
+                    const row = e.target.closest('tr');
+                    const valorParcelaSpan = row.querySelector('.valor-parcela');
+                    const valorParaCopiar = valorParcelaSpan.textContent.replace('R$ ', '').trim();
+                    
+                    navigator.clipboard.writeText(valorParaCopiar).then(() => {
+                        showFeedback('copy');
+                    }).catch(err => {
+                        console.error('Erro ao copiar valor: ', err);
+                        alert('Não foi possível copiar o valor.');
+                    });
+                }
+            });
+            
+            // NOVO: Event listener para a tecla "Enter"
+            tabelaCorpo.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && e.target.classList.contains('valor-total')) {
+                    e.preventDefault(); // Previne o comportamento padrão (como submeter um formulário)
+                    
+                    const currentRow = e.target.closest('tr');
+                    const nextRow = currentRow.nextElementSibling;
+
+                    if (nextRow) {
+                        const nextInput = nextRow.querySelector('.valor-total');
+                        if (nextInput) {
+                            nextInput.focus();
+                        }
+                    }
+                }
+            });
+
+            // Inicialização
+            initializeRows(10);
+        });
+    </script>
+
+</body>
+</html>
