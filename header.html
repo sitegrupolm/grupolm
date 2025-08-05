@@ -1,0 +1,31 @@
+<!-- Arquivo: header.html -->
+<div class="container mx-auto px-6">
+    <div class="flex justify-between items-center">
+        <a href="index.html" class="flex items-center">
+            <img src="imagens/logo/logo_branca.png" alt="Logo Grupo LM" class="logo-branca h-10 w-auto">
+            <img src="imagens/logo/logo_principal.png" alt="Logo Grupo LM" class="logo-cinza h-10 w-auto">
+        </a>
+        <nav class="hidden md:flex items-center space-x-8">
+            <!-- CORREÇÃO CRÍTICA: Os hrefs agora correspondem aos IDs das seções -->
+            <a href="#hero" class="nav-link text-white">Início</a>
+            <a href="#about" class="nav-link text-white font-medium">Sobre</a>
+            <a href="#services" class="nav-link text-white font-medium">Serviços</a>
+            <a href="#projects" class="nav-link text-white font-medium">Projetos</a>
+            <a href="#locacao" class="nav-link text-white font-medium">Locação</a>
+            <a href="#clients" class="nav-link text-white font-medium">Parceiros</a>
+            <a href="obras1.html" class="nav-link text-white font-medium">Obras</a>
+            <a href="#contact" class="nav-link text-white font-medium">Contato</a>
+            <a href="#contact" class="btn-orcamento bg-white text-primary px-6 py-2 rounded-full text-sm font-medium ml-4">Orçamento</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+            <i class="mobile-menu-icon fas fa-bars fa-lg text-white"></i>
+        </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-white rounded-lg mt-3">
+        <div class="pt-4 pb-3 space-y-2 text-center">
+            <a href="#hero" class="block px-3 py-2 text-base font-medium text-gray-700">Início</a>
+            <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700">Sobre</a>
+            <!-- ... adicione os outros links do menu mobile aqui ... -->
+        </div>
+    </div>
+</div>

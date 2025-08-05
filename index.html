@@ -274,83 +274,74 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
+.nav-link.active { font-weight: 700; border-bottom: 2px solid white; }
+        .navbar.scrolled .nav-link.active { border-bottom-color: #213761; }
         </style>
     </head>
+
+    <!-- ===================================================================== -->
+<!-- INFORMAÇÕES DE PRÉ-VISUALIZAÇÃO (WHATSAPP, REDES SOCIAIS) - OPEN GRAPH -->
+<!-- ===================================================================== -->
+
+<!-- Título que aparecerá no card -->
+<meta property="og:title" content="Grupo LM - Excelência em Construção e Energia" />
+
+<!-- Tipo de conteúdo (geralmente "website" para a home) -->
+<meta property="og:type" content="website" />
+
+<!-- Descrição curta e atrativa -->
+<meta property="og:description" content="Especialistas em construção civil, parques eólicos e solares, subestações de energia e locação de equipamentos." />
+
+<!-- A URL completa da sua página inicial -->
+<meta property="og:url" content="https://www.grupolm.org" />
+
+<!-- A imagem que aparecerá no card. IMPORTANTE! -->
+<!-- Use a URL completa. A imagem deve ter pelo menos 300x300 pixels. O ideal é 1200x630 pixels. -->
+<meta property="og:image" content="https://www.grupolm.org/imagens/logo/logo_preview.png" />
+
+<!-- O nome do seu site -->
+<meta property="og:site_name" content="Grupo LM" />
+
+<!-- Idioma do conteúdo -->
+<meta property="og:locale" content="pt_BR" />
+
+<!-- FIM DAS TAGS OPEN GRAPH -->
+
     <body class="antialiased">
 
         <div id="preloader" class="preloader">
         <div class="spinner"></div>
     </div>
 
-        <header class="navbar fixed w-full z-50 py-4">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-center">
-                <a href="#" class="flex items-center">
-        <img src="imagens/logo/logo_branca.png" alt="Logo do Grupo LM" class="logo-branca h-10 w-auto transition-all duration-300">
+              <!-- PLACEHOLDER PARA O CABEÇALHO (será preenchido pelo main.js) -->
+    <header id="main-header" class="navbar fixed w-full z-50 py-4"></header>
 
-        <img src="imagens/logo/logo_principal.png" alt="Logo do Grupo LM" class="logo-cinza h-10 w-auto transition-all duration-300">
-    </a>
-                
-                <nav class="hidden md:flex items-center space-x-8">
-        <a href="#hero" class="nav-link text-white active">Início</a> <a href="#about" class="nav-link text-white font-medium transition-colors duration-300">Sobre</a>
-        <a href="#services" class="nav-link text-white font-medium transition-colors duration-300">Serviços</a>
-        <a href="#projects" class="nav-link text-white font-medium transition-colors duration-300">Projetos</a>
-        <a href="#locacao" class="nav-link text-white font-medium transition-colors duration-300">Locação</a>
-        <a href="obras1.html" class="nav-link text-white font-medium transition-colors duration-300">Obras</a>
-        <a href="#contact" class="nav-link text-white font-medium transition-colors duration-300">Contato</a>
-        <a href="#contact" class="btn-orcamento bg-white text-primary px-6 py-2 rounded-full font-medium text-sm ml-4 transition-colors duration-300">Orçamento</a>
-    </nav>
-                
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                    <i class="mobile-menu-icon fas fa-bars fa-lg text-white transition-colors duration-300"></i>
-                </button>
+    <main>
+        <!-- CORREÇÃO CRÍTICA: Adicionado id="hero" para o Scroll Spy funcionar -->
+        <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                    <source src="videos/torres_eolicas.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
             </div>
-            
-        <div id="mobile-menu" class="mobile-menu md:hidden bg-white rounded-lg mt-3">
-        <div class="pt-4 pb-3 space-y-2 text-center">
-            <a href="#hero" class="block px-3 py-2 rounded-md text-base font-bold text-primary bg-gray-100">Início</a> <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Sobre</a>
-            <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Serviços</a>
-            <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Projetos</a>
-            <a href="#locacao" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Locação</a>
-            <a href="obras1.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Obras</a>
-            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Contato</a>
-            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Orçamento</a>
+            <div class="absolute inset-0 hero-overlay"></div>
+            <div class="relative z-10 px-4 text-center max-w-4xl mx-auto" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Excelência em Construção e Energia</h1>
+                <p class="text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto">Transformando desafios em realizações com inovação, qualidade e compromisso desde 2013.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#services" class="btn-primary px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition">Nossos Serviços</a>
+                    <a href="#contact" class="bg-white px-8 py-3 rounded-full font-semibold text-primary text-lg shadow-lg hover:shadow-xl transition hover:bg-gray-50">Fale Conosco</a>
+                </div>
             </div>
-    </div>
-        </div>
-    </header>
-
-        <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden"> <div class="absolute inset-0">
-            <video 
-                autoplay 
-                loop 
-                muted 
-                playsinline 
-                class="w-full h-full object-cover"
-            >
-                <source src="videos/torres_eolicas.mp4" type="video/mp4">
-                Seu navegador não suporta a tag de vídeo.
-            </video>
-        </div>
+            <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+                <a href="#about" class="text-white animate-bounce"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></a>
+            </div>
+        </section>
         
         <div class="absolute inset-0 hero-overlay"></div>
         
-        <div class="relative z-10 px-4 md:px-6 text-center max-w-4xl mx-auto" data-aos="fade-up">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                <span class="text-gradient">Excelência</span> em Construção e Energia
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto">
-                Transformando desafios em realizações com inovação, qualidade e compromisso desde 2013.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#services" class="btn-primary px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition">
-                    Nossos Serviços
-                </a>
-                <a href="#contact" class="bg-white px-8 py-3 rounded-full font-semibold text-primary text-lg shadow-lg hover:shadow-xl transition hover:bg-gray-50">
-                    Fale Conosco
-                </a>
-            </div>
+                               </div>
         </div>
         
         <div class="absolute bottom-10 left-0 right-0 flex justify-center">
@@ -588,76 +579,116 @@
     </div>
 </section>
 
-        <section id="clients" class="py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Clientes e Parceiros</h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Construímos relações de confiança com grandes nomes do mercado.
-                    </p>
-                </div>
-                
-                <div class="clients-container" data-aos="fade-up">
-                    <div class="clients-slider">
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/01.jpg" alt="Logo Cliente 1" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/ABB.jpg" alt="Logo Parceiro 2" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/AES.png" alt="Logo Cliente 3" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/AFAP.jpg" alt="Logo Parceiro4" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/BROOKFIELD.jpg" alt="Logo Cliente 5" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/BW.png" alt="Logo Parceiro 6" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/CHESF.jpg" alt="Logo Parceiro 7" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/EDF.png" alt="Logo Parceiro 8" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/ENGELMIG.jpg" alt="Logo Parceiro 9" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/EQUATORIAL.png" alt="Logo Parceiro 10" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/EUROGRUAS.jpg" alt="Logo Parceiro 11" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/GAMESA.jpg" alt="Logo Parceiro 12" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/GBIFRIGORIFICO.jpg" alt="Logo Parceiro 13" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/GE.jpg" alt="Logo Parceiro 14" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/GPEXPAN.jpg" alt="Logo Parceiro 15" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/IBERDROLA.jpg" alt="Logo Parceiro 16" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/LEON.jpg" alt="Logo Parceiro 17" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/LOMACON.jpg" alt="Logo Parceiro 18" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/MERCURIUS.jpg" alt="Logo Parceiro 19" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/PALAZZO.jpg" alt="Logo Parceiro 20" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/PHILLIS.jpg" alt="Logo Parceiro 21" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/PLANERGY.jpg" alt="Logo Parceiro 22" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/QUEIROZ.jpg" alt="Logo Parceiro 23" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/RENOVA.jpg" alt="Logo Parceiro 24" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/SADESUL.jpg" alt="Logo Parceiro 25" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/SNEFBRASIL.jpg" alt="Logo Parceiro 26" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+       <!-- INÍCIO DO CÓDIGO DE SUBSTITUIÇÃO -->
 
+<section id="clients" class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Clientes e Parceiros</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Construímos relações de confiança com grandes nomes do mercado.
+            </p>
+        </div>
+        
+        <!-- Grade de logos maior, colorida e com novo efeito de hover -->
+        <div class="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-x-8 gap-y-12 items-center justify-center" data-aos="fade-up" data-aos-delay="200">
 
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/01.jpg" alt="Logo Cliente 1" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/ABB.jpg" alt="Logo Cliente 2" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/AES.png" alt="Logo Cliente 3" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/AFAP.jpg" alt="Logo Cliente 4" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/BROOKFIELD.jpg" alt="Logo Cliente 5" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/BW.png" alt="Logo Cliente 6" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/CHESF.jpg" alt="Logo Cliente 7" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/EDF.png" alt="Logo Cliente 8" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/ENGELMIG.jpg" alt="Logo Cliente 9" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/EQUATORIAL.png" alt="Logo Cliente 10" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/EUROGRUAS.jpg" alt="Logo Cliente 11" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/GAMESA.jpg" alt="Logo Cliente 12" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/GBIFRIGORIFICO.jpg" alt="Logo Cliente 13" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/GE.jpg" alt="Logo Cliente 14" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/GPEXPAN.jpg" alt="Logo Cliente 15" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/IBERDROLA.jpg" alt="Logo Cliente 16" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/LEON.jpg" alt="Logo Cliente 17" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/LOMACON.jpg" alt="Logo Cliente 18" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/MERCURIUS.jpg" alt="Logo Cliente 19" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/PALAZZO.jpg" alt="Logo Cliente 20" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/PHILLIS.jpg" alt="Logo Cliente 21" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/PLANERGY.jpg" alt="Logo Cliente 22" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/QUEIROZ.jpg" alt="Logo Cliente 23" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/RENOVA.jpg" alt="Logo Cliente 24" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/SADESUL.jpg" alt="Logo Cliente 25" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
-                        <div class="client-logo flex items-center justify-center"><img src="imagens/logo/logo_cliente/SNEFBRASIL.jpg" alt="Logo Cliente 26" class="h-24 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"></div>
+            <!-- Efeito: Os logos agora levantam e ganham uma sombra sutil ao passar o mouse -->
 
-                    </div>
-                </div>
-            </div>
-        </section>
+          <!--  <a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/01.jpg" alt="Logo Cliente" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a> -->
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/TAESA.png" alt="Logo Parceiro ABB" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/NEOENERGIA.png" alt="Logo Parceiro ABB" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/AUREN.png" alt="Logo Parceiro ABB" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/ABB.jpg" alt="Logo Parceiro ABB" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/AES.png" alt="Logo Cliente AES" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/AFAP.jpg" alt="Logo Parceiro AFAP" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/BROOKFIELD.jpg" alt="Logo Cliente Brookfield" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/BW.png" alt="Logo Parceiro BW" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/CHESF.jpg" alt="Logo Parceiro Chesf" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<!-- <a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/EDF.png" alt="Logo Parceiro EDF" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a> -->
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/ENGELMIG.jpg" alt="Logo Parceiro Engelmig" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/EQUATORIAL.png" alt="Logo Parceiro Equatorial" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/EUROGRUAS.jpg" alt="Logo Parceiro Eurogruas" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/GAMESA.jpg" alt="Logo Parceiro Gamesa" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<!-- <a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/GBIFRIGORIFICO.jpg" alt="Logo Parceiro GBI Frigorífico" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a> -->
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/GE.jpg" alt="Logo Parceiro GE" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/GPEXPAN.jpg" alt="Logo Parceiro GPEXPAN" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/IBERDROLA.jpg" alt="Logo Parceiro Iberdrola" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/LEON.jpg" alt="Logo Parceiro Leon" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/LOMACON.jpg" alt="Logo Parceiro Lomacon" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/MERCURIUS.jpg" alt="Logo Parceiro Mercurius" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/PALAZZO.jpg" alt="Logo Parceiro Palazzo" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/PHILLIS.jpg" alt="Logo Parceiro Phillis" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/PLANERGY.jpg" alt="Logo Parceiro Planergy" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/QUEIROZ.jpg" alt="Logo Parceiro Queiroz" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/RENOVA.jpg" alt="Logo Parceiro Renova" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/SADESUL.jpg" alt="Logo Parceiro Sadesul" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+<a href="#clients" class="flex justify-center items-center">
+    <img src="imagens/logo/logo_cliente/SNEFBRASIL.jpg" alt="Logo Parceiro Snef" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
+</a>
+            <!-- Adicione ou remova outros logos seguindo exatamente o mesmo padrão -->
+
+        </div>
+    </div>
+</section>
+
+<!-- FIM DO CÓDIGO DE SUBSTITUIÇÃO -->
 
         <section id="contact" class="py-24 bg-white">
             <div class="container mx-auto px-6">
@@ -722,234 +753,18 @@
             </div>
         </section>
 
-        <footer class="bg-primary text-gray-300">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div>
-                    <a href="#" class="flex items-center mb-4">
-    <img src="imagens/logo/logo_branca.png" alt="Logo do Grupo LM" class="h-10 w-auto">
-</a>
-                    <p class="text-gray-400">Desde 1998, construindo o futuro com excelência.</p>
-                </div>
-                <div class="lg:ml-16">
-                    <h3 class="text-white font-bold text-lg mb-4">Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#hero" class="hover:text-white transition-colors">Início</a></li> 
-                        <li><a href="#about" class="hover:text-white transition-colors">Sobre</a></li>
-                        <li><a href="#services" class="hover:text-white transition-colors">Serviços</a></li>
-                        <li><a href="#projects" class="hover:text-white transition-colors">Projetos</a></li>
-                        <li><a href="#locacao" class="hover:text-white transition-colors">Locação</a></li>  
-                        <li><a href="obras1.html" class="hover:text-white transition-colors">Obras</a></li>
-                        <li><a href="#contact" class="hover:text-white transition-colors">Contato</a></li>
-                    </ul>
-                </div>
-                <div>
-                    
-                    <h3 class="text-white font-bold text-lg mb-4">Contato</h3>
-                    <ul class="space-y-2">
-                        <li><a href="https://wa.me/5577988255980?text=Oi!%20Vi%20o%20site%20do%20Grupo%20LM%20e%20gostaria%20de%20um%20orçamento." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">(77) 9 98825-5980</a></li>
-                        <li><a href="mailto:financeiro@grupolm.org" class="hover:text-white transition-colors">financeiro@grupolm.org</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-4">Siga-nos</h3>
-                    <div class="flex space-x-4">
-    <a href="https://www.instagram.com/grupolm_" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
-    <a href="https://br.linkedin.com/company/grupo-l-m" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-linkedin-in"></i></a>
-    <a href="https://www.facebook.com/grupolm.org" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-facebook-f"></i></a>
-</div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Grupo LM. Todos os direitos reservados.</p>
-                <p class="text-sm mt-1">Sede em Guanambi, BA. Atuação Nacional.</p>
-            </div>
-        </div>
-    </footer>
+        <!-- PLACEHOLDER PARA O RODAPÉ (será preenchido pelo main.js) -->
+    <footer id="main-footer" class="bg-primary text-gray-300"></footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <button id="scrollToTopBtn" class="fixed bottom-24 right-6 bg-primary text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
-        <i class="fas fa-arrow-up text-lg"></i>
+    <!-- Botão Voltar ao Topo -->
+    <button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-lg transition-all duration-300 opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script>
-        // O seu listener DOMContentLoaded principal
-        document.addEventListener('DOMContentLoaded', () => {
-    // Inicializa AOS (Animate On Scroll)
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 50 // Inicia a animação um pouco antes do elemento aparecer
-    });
-    
-    // Efeito de scroll na barra de navegação
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-    
-    // Menu móvel
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuIcon = mobileMenuButton.querySelector('i');
-    
-    mobileMenuButton.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('open');
-        mobileMenuIcon.className = isOpen ? 'fas fa-times fa-lg' : 'fas fa-bars fa-lg';
-    });
-    
-    // Fecha o menu móvel ao clicar em um link
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            mobileMenuIcon.className = 'fas fa-bars fa-lg';
-        });
-    });
+    <!-- Scripts externos e a chamada ÚNICA para o script principal -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="js/main.js"></script>
 
-    // --- SCROLL SPY LOGIC START ---
-    const sections = document.querySelectorAll('section[id]'); // Selects all sections with an ID
-    const navLinks = document.querySelectorAll('.nav-link');
-    const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-
-    const observerOptions = {
-        root: null, // viewport
-        rootMargin: '-50% 0px -50% 0px', // When the middle of the section crosses the middle of the viewport
-        threshold: 0 // As soon as any part of the section is visible
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const id = entry.target.id;
-            const correspondingNavLink = document.querySelector(`.nav-link[href="#${id}"]`);
-            const correspondingMobileNavLink = document.querySelector(`#mobile-menu a[href="#${id}"]`);
-
-            if (correspondingNavLink) { // Check if a corresponding desktop nav link exists
-                if (entry.isIntersecting) {
-                    // Remove active from all and add to the current one
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    correspondingNavLink.classList.add('active');
-                }
-            }
-
-            if (correspondingMobileNavLink) { // Check if a corresponding mobile nav link exists
-                if (entry.isIntersecting) {
-                    mobileNavLinks.forEach(link => link.classList.remove('active'));
-                    correspondingMobileNavLink.classList.add('active');
-                }
-            }
-        });
-    }, observerOptions);
-
-    // Observe each section
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // Handle initial load to set the active link for the top section if visible
-    const firstSection = document.getElementById('hero');
-    if (firstSection) {
-        const rect = firstSection.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            document.querySelector('.nav-link[href="#hero"]').classList.add('active');
-            mobileNavLinks.forEach(link => link.classList.remove('active'));
-            document.querySelector('#mobile-menu a[href="#hero"]').classList.add('active');
-        }
-    }
-    // --- SCROLL SPY LOGIC END ---
-
-
-    // Lógica para animar o contador (Anos de Experiência)
-    function animateCounter(targetId, start, end, duration) {
-        const counterElement = document.getElementById(targetId);
-        if (!counterElement) return;
-
-        let current = start;
-        const range = end - start;
-        const increment = end > start ? 1 : -1;
-        const stepTime = Math.abs(Math.floor(duration / range));
-
-        const timer = setInterval(() => {
-            current += increment;
-            counterElement.textContent = current + '+';
-            if (current == end) {
-                clearInterval(timer);
-            }
-        }, stepTime);
-    }
-
-    // Configurar o Intersection Observer para animar o contador
-    const experienceSection = document.querySelector('#about'); // A seção 'Sobre'
-    const experienceCounterElement = document.getElementById('experience-counter');
-    let hasAnimated = false;
-
-    if (experienceSection && experienceCounterElement) {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !hasAnimated) {
-                    animateCounter('experience-counter', 0, 11, 2000);
-                    hasAnimated = true;
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            root: null,
-            threshold: 0.5
-        });
-        observer.observe(experienceSection);
-    }
-
-    // --- Lógica do Botão Voltar ao Topo ---
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-    if (scrollToTopBtn) { // Verifica se o botão existe antes de adicionar listeners
-        const toggleScrollToTopButton = () => {
-            // Calcula 50% da altura da página para determinar o ponto de exibição
-            const halfwayPoint = document.body.scrollHeight / 2;
-
-            if (window.scrollY > halfwayPoint) {
-                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
-                scrollToTopBtn.classList.add('opacity-100', 'visible');
-            } else {
-                scrollToTopBtn.classList.remove('opacity-100', 'visible');
-scrollToTopBtn.classList.add('opacity-0', 'invisible'); // Corrigido 'ToP' para 'Top'
-            }
-        };
-
-        window.addEventListener('scroll', toggleScrollToTopButton);
-        // Executa a função uma vez no carregamento da página, caso o usuário já esteja abaixo da metade
-        toggleScrollToTopButton();
-        
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-}); // FIM DO DOMContentLoaded principal
-
-// Novo script para esconder o preloader quando a página estiver totalmente carregada
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        preloader.classList.add('fade-out');
-        // Opcional: remover o preloader do DOM após a transição para liberar recursos
-        setTimeout(() => {
-            preloader.remove();
-        }, 600); // Deve ser igual à duração da transição no CSS
-    }
-    // Adiciona a classe 'loaded' ao body aqui também, se ainda precisar para outras transições
-    document.body.classList.add('loaded');
-}); 
-    </script>
 </body>
 </html>

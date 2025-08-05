@@ -143,50 +143,44 @@
 
     </style>
 </head>
+
+    <!-- ===================================================================== -->
+<!-- INFORMAÇÕES DE PRÉ-VISUALIZAÇÃO (WHATSAPP, REDES SOCIAIS) - OPEN GRAPH -->
+<!-- ===================================================================== -->
+
+<!-- Título que aparecerá no card -->
+<meta property="og:title" content="Portfólio de Obras | Grupo LM" />
+
+<!-- Tipo de conteúdo (pode ser "article" se for um portfólio) -->
+<meta property="og:type" content="article" />
+
+<!-- Descrição da página de obras -->
+<meta property="og:description" content="Explore os projetos de engenharia, energia e construção civil realizados com a excelência e compromisso do Grupo LM." />
+
+<!-- A URL completa da sua página inicial -->
+<meta property="og:url" content="https://www.grupolm.org" />
+
+<!-- Uma imagem de destaque da página de obras -->
+<!-- Pode ser uma colagem de projetos ou a foto do projeto mais impressionante -->
+<meta property="og:image" content="https://www.seusite.com.br/imagens/imagens_soltas/subestacao_pindai_II.jpg" />
+
+<!-- O nome do seu site -->
+<meta property="og:site_name" content="Grupo LM" />
+
+<!-- Idioma do conteúdo -->
+<meta property="og:locale" content="pt_BR" />
+
+<!-- FIM DAS TAGS OPEN GRAPH -->
+
+
 <body class="bg-slate-50">
 
      <div id="preloader" class="preloader">
         <div class="spinner"></div>
     </div>
 
-   <header class="navbar fixed w-full z-50 py-4">
-    <div class="container mx-auto px-6">
-        <div class="flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
-                <img src="imagens/logo/logo_branca.png" alt="Logo do Grupo LM" class="logo-branca h-10 w-auto transition-all duration-300">
-                <img src="imagens/logo/logo_principal.png" alt="Logo do Grupo LM" class="logo-cinza h-10 w-auto transition-all duration-300">
-            </a>
+       <header id="main-header" class="navbar fixed w-full z-50 py-4"></header>
 
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="nav-link text-white font-medium transition-colors duration-300">Início</a>
-                <a href="index.html#about" class="nav-link text-white font-medium transition-colors duration-300">Sobre</a>
-                <a href="index.html#services" class="nav-link text-white font-medium transition-colors duration-300">Serviços</a>
-                <a href="index.html#projects" class="nav-link text-white font-medium transition-colors duration-300">Projetos</a>
-                <a href="index.html#locacao" class="nav-link text-white font-medium transition-colors duration-300">Locação</a>
-                <a href="obras1.html" class="nav-link text-white active">Obras</a>
-                <a href="index.html#contact" class="nav-link text-white font-medium transition-colors duration-300">Contato</a>
-                <a href="index.html#contact" class="btn-orcamento bg-white text-primary px-6 py-2 rounded-full font-medium text-sm ml-4 transition-colors duration-300">Orçamento</a>
-            </nav>
-
-            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                <i class="mobile-menu-icon fas fa-bars fa-lg text-white transition-colors duration-300"></i>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="mobile-menu md:hidden bg-white rounded-lg mt-3">
-            <div class="pt-4 pb-3 space-y-2 text-center">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Início</a>
-                <a href="index.html#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Sobre</a>
-                <a href="index.html#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Serviços</a>
-                <a href="index.html#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Projetos</a>
-                <a href="index.html#locacao" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Locação</a>
-                <a href="obras1.html" class="block px-3 py-2 rounded-md text-base font-bold text-primary bg-gray-100">Obras</a>
-                <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-100">Contato</a>
-                <a href="index.html#contact" class="block w-auto mx-4 text-center btn-primary px-3 py-3 rounded-md text-base font-medium mt-3">Solicitar Orçamento</a>
-            </div>
-        </div>
-    </div>
-</header>
 
     <main>
         <section class="relative bg-gray-900 pt-40 pb-12 text-center">
@@ -1367,214 +1361,19 @@ class="py-12 bg-gray text-center">
         <a href="obras2.html" class="px-4 py-2 text-primary border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors duration-200">Próxima</a>
     </nav>
 </section>
-    <footer class="bg-primary text-gray-300">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+       
+<footer id="main-footer" class="bg-primary text-gray-300"></footer>
 
-                <div>
-                    <a href="index.html" class="flex items-center mb-4">
-                        <img src="imagens/logo/logo_branca.png" alt="Logo do Grupo LM" class="h-10 w-auto">
-                    </a>
-                    <p class="text-gray-400">Desde 1998, construindo o futuro com excelência.</p>
-                </div>
-
-                <div class="lg:ml-16">
-                    <h3 class="text-white font-bold text-lg mb-4">Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:text-white transition-colors">Início</a></li>
-                        <li><a href="index.html#about" class="hover:text-white transition-colors">Sobre</a></li>
-                        <li><a href="index.html#services" class="hover:text-white transition-colors">Serviços</a></li>
-                        <li><a href="index.html#projects" class="hover:text-white transition-colors">Projetos</a></li>
-                        <li><a href="index.html#locacao" class="hover:text-white transition-colors">Locação</a></li> 
-                        <li><a href="obras1.html" class="hover:text-white transition-colors">Obras</a></li>
-                        <li><a href="#contact" class="hover:text-white transition-colors">Contato</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-4">Contato</h3>
-                    <ul class="space-y-2">
-                        <li><a href="https://wa.me/5577988255980" target="_blank" class="hover:text-white transition-colors">(77) 9 98825-5980</a></li>
-                        <li><a href="mailto:financeiro@grupolm.org" class="hover:text-white transition-colors">financeiro@grupolm.org</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-4">Siga-nos</h3>
-                    <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/grupolm_" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
-                        <a href="https://br.linkedin.com/company/grupo-l-m" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.facebook.com/grupolm.org" target="_blank" class="text-gray-300 hover:text-white transition-colors text-2xl"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Grupo LM. Todos os direitos reservados.</p>
-                <p class="text-sm mt-1">Sede em Guanambi, BA. Atuação Nacional.</p>
-            </div>
-        </div>
-    </footer>
 
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <button id="scrollToTopBtn" class="fixed bottom-24 right-6 bg-primary text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
-    <i class="fas fa-arrow-up text-lg"></i>
-</button>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <button id="scrollToTopBtn" class="fixed bottom-24 right-6 bg-primary text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
-        <i class="fas fa-arrow-up text-lg"></i>
+    <!-- Botão Voltar ao Topo -->
+    <button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-lg transition-all duration-300 opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
     </button>
+    
+    <script src="js/main.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Inicializa a biblioteca de animações ao rolar
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100
-            });
-
-            // Lógica do Cabeçalho com Scroll
-            const navbar = document.querySelector('.navbar');
-            const handleScroll = () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            };
-            window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Executa uma vez no carregamento para o caso da página carregar rolada
-
-            // Lógica do Menu Mobile
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if(mobileMenuButton) { // Boa prática de segurança
-                const mobileMenuIcon = mobileMenuButton.querySelector('i');
-                mobileMenuButton.addEventListener('click', () => {
-                    const isOpen = mobileMenu.classList.toggle('open');
-                    if(mobileMenuIcon) { // Boa prática de segurança
-                        mobileMenuIcon.className = isOpen ? 'fas fa-times fa-lg' : 'fas fa-bars fa-lg';
-                    }
-                });
-            }
-            
-            // Fecha o menu móvel ao clicar em um link
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('open');
-                    if(mobileMenuButton && mobileMenuButton.querySelector('i')) { // Verifica se os elementos existem
-                        mobileMenuButton.querySelector('i').className = 'fas fa-bars fa-lg';
-                    }
-                });
-            });
-
-            // --- LÓGICA DE ATIVAÇÃO DE LINKS NA NAVEGAÇÃO AO SCROLLAR (Scroll Spy) ---
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '-50% 0px -50% 0px', // Ativa quando o meio da seção cruza o meio da tela
-                threshold: 0
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const id = entry.target.id;
-                    const currentPath = window.location.pathname.split('/').pop(); // "obras1.html" ou "" para index
-
-                    // Limpa 'active' de todos os links primeiro para evitar múltiplos ativos
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    mobileNavLinks.forEach(link => link.classList.remove('active'));
-
-                    // Lógica para links da navegação principal (desktop e mobile)
-                    const obrasNavLink = document.querySelector('.nav-link[href="obras1.html"]');
-                    const obrasMobileNavLink = document.querySelector('#mobile-menu a[href="obras1.html"]');
-
-                    if (currentPath === 'obras1.html') {
-                        if (obrasNavLink) obrasNavLink.classList.add('active');
-                        if (obrasMobileNavLink) obrasMobileNavLink.classList.add('active');
-                    } else if (currentPath === 'index.html' || currentPath === '') { // Se estiver na index.html
-                         const homeNavLink = document.querySelector('.nav-link[href="index.html"]');
-                         const homeMobileNavLink = document.querySelector('#mobile-menu a[href="index.html"]');
-                         if (homeNavLink) homeNavLink.classList.add('active');
-                         if (homeMobileNavLink) homeMobileNavLink.classList.add('active');
-                    }
-                    
-                    // Lógica para links de subseções DENTRO desta página (Obras)
-                    if (entry.isIntersecting) {
-                        const correspondingNavLink = document.querySelector(`.nav-link[href="${currentPath}#${id}"]`);
-                        const correspondingMobileNavLink = document.querySelector(`#mobile-menu a[href="${currentPath}#${id}"]`);
-                        if (correspondingNavLink) {
-                            // Se este link de subseção for detectado, remova 'active' do link principal "Obras"
-                            if (obrasNavLink) obrasNavLink.classList.remove('active');
-                            if (obrasMobileNavLink) obrasMobileNavLink.classList.remove('active');
-                            correspondingNavLink.classList.add('active');
-                        }
-                        if (correspondingMobileNavLink) correspondingMobileNavLink.classList.add('active');
-                    }
-                });
-            }, observerOptions);
-
-            // Observa cada seção para o scroll spy
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-            // --- FIM: LÓGICA DE ATIVAÇÃO DE LINKS NA NAVEGAÇÃO AO SCROLLLAR (Scroll Spy) ---
-
-
-            // --- Lógica do Botão Voltar ao Topo ---
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-            if (scrollToTopBtn) {
-                const toggleScrollToTopButton = () => {
-                    const halfwayPoint = document.body.scrollHeight / 2;
-
-                    if (window.scrollY > halfwayPoint) {
-                        scrollToTopBtn.classList.remove('opacity-0', 'invisible');
-                        scrollToTopBtn.classList.add('opacity-100', 'visible');
-                    } else {
-                        scrollToTopBtn.classList.remove('opacity-100', 'visible');
-                        scrollToTopBtn.classList.add('opacity-0', 'invisible');
-                    }
-                };
-
-                window.addEventListener('scroll', toggleScrollToTopButton);
-                toggleScrollToTopButton(); // Executa uma vez no carregamento
-                
-                scrollToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-            // --- FIM: Lógica do Botão Voltar ao Topo ---
-        }); // FIM DO DOMContentLoaded principal
-
-
-        // ***** INÍCIO: JavaScript para Esconder o Preloader *****
-        // Este script é executado quando TODOS os recursos da página (imagens, vídeos, etc.) estão carregados.
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('fade-out');
-                // Opcional: remover o preloader do DOM após a transição para liberar recursos
-                setTimeout(() => {
-                    preloader.remove();
-                }, 600); // Duração da transição no CSS (0.6s = 600ms)
-            }
-        });
-        // ***** FIM: JavaScript para Esconder o Preloader *****
-    </script>
-    </body>
+</body>
 </html>
