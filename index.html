@@ -1,323 +1,68 @@
-    <!DOCTYPE html>
-    <html lang="pt-BR" class="scroll-smooth">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Grupo LM - Excelência em Construção e Energia</title>
-        <meta name="description" content="Grupo LM - Especialistas em construção civil, parques eólicos e solares, subestações de energia e locação de equipamentos. Atuamos em toda a Bahia e Brasil.">
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo LM - Excelência em Construção e Energia</title>
+    <meta name="description" content="Grupo LM - Especialistas em construção civil, parques eólicos e solares, subestações de energia e locação de equipamentos. Atuamos em toda a Bahia e Brasil.">
 
-        <link rel="icon" href="imagens/logo/logo_favicon.png" type="image/png">
+    <!-- Meta Tags Open Graph (WhatsApp, etc.) -->
+    <meta property="og:title" content="Grupo LM - Excelência em Construção e Energia" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Transformando desafios em realizações com inovação, qualidade e compromisso desde 2013." />
+    <meta property="og:url" content="https://www.grupolm.org/" />
+    <meta property="og:image" content="https://www.grupolm.org/imagens/logo/logo_preview.png" />
+    <meta property="og:site_name" content="Grupo LM" />
+    <meta property="og:locale" content="pt_BR" />
 
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            primary: '#213761',
-                            secondary: '#ffffff',
-                            dark: '#000000'
-                        },
-                        fontFamily: {
-                            sans: ['Inter', 'sans-serif'],
-                        },
-                    }
-                }
-            }
-        </script>
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-        <style>
-            body {
-                font-family: 'Inter', sans-serif;
-                overflow-x: hidden;
-                color: #000000;
-                line-height: 1.6;
-                background-color: #ffffff;
-                opacity: 0;
-                transition: opacity 0.8s ease-in-out;
-            }
-
-            body.loaded {
-                opacity: 1;
-            }
-
-            .text-gradient {
-    background: linear-gradient(90deg, white, white);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    }
-            
-            /* Tipografia Fluida para o Título Principal */
-            .hero-title {
-                font-size: clamp(2.5rem, 6vw, 4rem);
-            }
-
-            .btn-primary {
-                background-color: #213761;
-                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-                color: white;
-            }
-
-            .btn-primary:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 12px 24px -6px rgba(33, 55, 97, 0.3);
-            }
-
-            .navbar {
-        /* Estado inicial: fundo transparente, transição suave */
-        background-color: transparent;
-        transition: all 0.4s ease-out;
-    }
-
-        .navbar.scrolled {
-            /* Estado ao rolar: fundo branco, com desfoque e sombra */
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    <link rel="icon" href="imagens/logo/logo_favicon.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#213761', secondary: '#ffffff', dark: '#000000' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } }
         }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-        /* REGRAS CORRIGIDAS ABAIXO COM '!important' 
-        */
-
-        /* Regras de cor para o texto ao rolar */
-        .navbar.scrolled .nav-brand,
-        .navbar.scrolled .nav-link,
-        .navbar.scrolled .mobile-menu-icon {
-            color: #000000 !important; /* CORRIGIDO: Força a cor preta */
-        }
-
-        /* Ajuste do hover dos links no estado de rolagem */
-        .navbar.scrolled .nav-link:hover {
-            color: #213761 !important; /* CORRIGIDO: Força a cor primária no hover */
-        }
-
-        /* Inverte as cores do logo 'LM' */
-        .navbar.scrolled .logo-circle {
-            background-color: #213761 !important; /* CORRIGIDO: Força o fundo primário */
-            color: #ffffff !important;           /* CORRIGIDO: Força o texto branco */
-        }
-
-        /* Inverte as cores do botão 'Orçamento' */
-        .navbar.scrolled .btn-orcamento {
-            background-color: #213761 !important; /* CORRIGIDO: Força o fundo primário */
-            color: #ffffff !important;           /* CORRIGIDO: Força o texto branco */
-        }
-
-        .navbar.scrolled .btn-orcamento:hover {
-            background-color: #1a2c4f !important; /* CORRIGIDO: Força um tom mais escuro no hover */
-        }
-
-            .hero-overlay {
-                background: linear-gradient(135deg, rgba(33, 55, 97, 0.35) 0%, rgba(26, 44, 79, 0.9) 100%);
-            }
-
-            .service-card {
-                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-                border: 1px solid #e2e8f0;
-            }
-
-            .service-card:hover {
-                transform: translateY(-12px) scale(1.02);
-                box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-                border-color: #213761;
-            }
-
-            .project-overlay {
-                background: linear-gradient(to top, rgba(33, 55, 97, 0.95) 0%, rgba(33, 55, 97, 0) 100%);
-                opacity: 0;
-                transform: translateY(20px);
-                transition: all 0.4s ease-out;
-            }
-
-            .project-card:hover .project-overlay {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .project-card img {
-                transition: transform 0.4s ease-out;
-            }
-
-            .project-card:hover img {
-                transform: scale(1.05);
-            }
-            
-            .mobile-menu {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.4s ease-out;
-            }
-
-            .mobile-menu.open {
-                max-height: 500px; /* Aumente se necessário */
-            }
-
-            /* Carrossel de Clientes com Animação Infinita */
-            .clients-container {
-                overflow: hidden;
-                -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-                mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-            }
-            
-            .clients-slider {
-                display: flex;
-                width: fit-content;
-                animation: slide 180s linear infinite;
-            }
-
-            .client-logo {
-                flex-shrink: 0;
-                width: 180px; /* Largura fixa para cada logo */
-                margin: 0 40px;
-            }
-
-            @keyframes slide {
-                from { transform: translateX(0); }
-                to { transform: translateX(-50%); }
-            }
-
-            .vimeo-background iframe {
-        width: 100vw;
-        height: 56.25vw; /* 16:9 Aspect Ratio */
-        min-height: 100vh;
-        min-width: 177.77vh; /* 16:9 Aspect Ratio */
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none; /* Impede que o vídeo seja clicável */
-    }
-
-    /* Adicione este novo estilo no final do seu bloco <style> */
-
-    /* Por padrão, a logo cinza (para fundo branco) fica escondida */
-    .logo-branca {
-        display: block; /* A logo branca aparece por padrão */
-    }
-    .logo-cinza {
-        display: none;  /* A logo cinza fica escondida por padrão */
-    }
-
-    /* Quando o cabeçalho é rolado (fica branco)... */
-    .navbar.scrolled .logo-branca {
-        display: none;  /* Escondemos a logo branca */
-    }
-    .navbar.scrolled .logo-cinza {
-        display: block; /* Mostramos a logo cinza */
-    }
-
-    /* Estilo do link ativo na navegação */
-    .nav-link.active {
-        font-weight: 700; /* Deixa o texto em negrito */
-        border-bottom: 2px solid white; /* Cria a linha branca em baixo */
-    }
-
-    /* Muda a cor da linha quando o cabeçalho fica branco */
-    .navbar.scrolled .nav-link.active {
-        border-bottom-color: #213761; /* Muda a linha para azul escuro */
-    }
-
-    .project-category-tag {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        font-size: 0.75rem;
-        font-weight: 500;
-        line-height: 1;
-        border-radius: 9999px; /* Efeito de pílula */
-        background-color: #E0E7FF; /* Cor de fundo suave (indigo-100) */
-        color: #3730A3; /* Cor do texto (indigo-800) */
-    }
-
-
-/* --- Preloader Styles --- */
-.preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #213761; /* Cor primária do seu tema */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Garante que fique acima de tudo */
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
-}
-
-.preloader.fade-out {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.spinner {
-    border: 5px solid rgba(255, 255, 255, 0.2); /* Aro transparente branco */
-    border-top: 5px solid #ffffff; /* Aro branco que gira */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-.nav-link.active { font-weight: 700; border-bottom: 2px solid white; }
+    <!-- Estilos Essenciais (Preservados do seu original) -->
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; opacity: 0; transition: opacity 0.8s ease-in-out; }
+        body.loaded { opacity: 1; }
+        .text-gradient { background: linear-gradient(90deg, white, white); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; }
+        .btn-primary { background-color: #213761; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); color: white; }
+        .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -6px rgba(33, 55, 97, 0.3); }
+        .navbar { transition: all 0.4s ease-out; }
+        .navbar.scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); }
+        .navbar.scrolled .nav-link, .navbar.scrolled .mobile-menu-icon { color: #000000 !important; }
+        .navbar.scrolled .nav-link:hover { color: #213761 !important; }
+        .navbar.scrolled .btn-orcamento { background-color: #213761 !important; color: #ffffff !important; }
+        .navbar.scrolled .btn-orcamento:hover { background-color: #1a2c4f !important; }
+        .hero-overlay { background: linear-gradient(135deg, rgba(33, 55, 97, 0.35) 0%, rgba(26, 44, 79, 0.9) 100%); }
+        .service-card { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); border: 1px solid #e2e8f0; }
+        .service-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1); border-color: #213761; }
+        .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .mobile-menu.open { max-height: 500px; }
+        .logo-branca { display: block; } .logo-cinza { display: none; }
+        .navbar.scrolled .logo-branca { display: none; } .navbar.scrolled .logo-cinza { display: block; }
+        .nav-link.active { font-weight: 700; border-bottom: 2px solid white; }
         .navbar.scrolled .nav-link.active { border-bottom-color: #213761; }
-        </style>
-    </head>
+        .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #213761; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease-out, visibility 0.6s ease-out; }
+        .preloader.fade-out { opacity: 0; visibility: hidden; }
+        .spinner { border: 5px solid rgba(255, 255, 255, 0.2); border-top-color: #ffffff; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="antialiased">
 
-    <!-- ===================================================================== -->
-<!-- INFORMAÇÕES DE PRÉ-VISUALIZAÇÃO (WHATSAPP, REDES SOCIAIS) - OPEN GRAPH -->
-<!-- ===================================================================== -->
+    <div id="preloader" class="preloader"><div class="spinner"></div></div>
 
-<!-- Título que aparecerá no card -->
-<meta property="og:title" content="Grupo LM - Excelência em Construção e Energia" />
-
-<!-- Tipo de conteúdo (geralmente "website" para a home) -->
-<meta property="og:type" content="website" />
-
-<!-- Descrição curta e atrativa -->
-<meta property="og:description" content="Especialistas em construção civil, parques eólicos e solares, subestações de energia e locação de equipamentos." />
-
-<!-- A URL completa da sua página inicial -->
-<meta property="og:url" content="https://www.grupolm.org" />
-
-<!-- A imagem que aparecerá no card. IMPORTANTE! -->
-<!-- Use a URL completa. A imagem deve ter pelo menos 300x300 pixels. O ideal é 1200x630 pixels. -->
-<meta property="og:image" content="https://www.grupolm.org/imagens/logo/logo_preview.png" />
-
-<!-- O nome do seu site -->
-<meta property="og:site_name" content="Grupo LM" />
-
-<!-- Idioma do conteúdo -->
-<meta property="og:locale" content="pt_BR" />
-
-<!-- FIM DAS TAGS OPEN GRAPH -->
-
-    <body class="antialiased">
-
-        <div id="preloader" class="preloader">
-        <div class="spinner"></div>
-    </div>
-
-              <!-- PLACEHOLDER PARA O CABEÇALHO (será preenchido pelo main.js) -->
     <header id="main-header" class="navbar fixed w-full z-50 py-4"></header>
 
     <main>
-        <!-- CORREÇÃO CRÍTICA: Adicionado id="hero" para o Scroll Spy funcionar -->
         <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0">
                 <video autoplay loop muted playsinline class="w-full h-full object-cover">
@@ -327,7 +72,9 @@
             </div>
             <div class="absolute inset-0 hero-overlay"></div>
             <div class="relative z-10 px-4 text-center max-w-4xl mx-auto" data-aos="fade-up">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Excelência em Construção e Energia</h1>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    <span class="text-gradient">Excelência</span> em Construção e Energia
+                </h1>
                 <p class="text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto">Transformando desafios em realizações com inovação, qualidade e compromisso desde 2013.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <a href="#services" class="btn-primary px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition">Nossos Serviços</a>
@@ -338,20 +85,6 @@
                 <a href="#about" class="text-white animate-bounce"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></a>
             </div>
         </section>
-        
-        <div class="absolute inset-0 hero-overlay"></div>
-        
-                               </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
-            <a href="#about" class="text-white animate-bounce">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
-            </a>
-        </div>
-    </section>
 
         <section id="about" class="py-24 bg-white">
             <div class="container mx-auto px-6">
@@ -360,389 +93,104 @@
                         <div class="relative rounded-xl overflow-hidden shadow-2xl">
                             <img src="imagens/imagens_soltas/subestacao_pindai_II.jpg" alt="Equipe do Grupo LM em reunião de planejamento" class="w-full h-auto object-cover">
                             <div class="absolute -bottom-4 -right-4 bg-primary text-white p-8 rounded-tl-3xl shadow-lg">
-        <div id="experience-counter" class="text-5xl font-bold">0+</div> <div class="text-lg">Anos de Experiência</div>
-    </div>
+                                <div id="experience-counter" class="text-5xl font-bold">0+</div>
+                                <div class="text-lg">Anos de Experiência</div>
+                            </div>
                         </div>
                     </div>
-                    
                     <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
-                        <h2 class="text-4xl md:text-4xl font-bold text-gray-900 mb-6">
-                            <span class="text-primary">Grupo LM</span>: Nossa História
-                        </h2>
-                        <p class="text-lg text-gray-700 text-justify indent-0 mb-0">
-        Construtora fundada em 1998, a AGROHIDRO inicialmente atendeu a demanda de poços artesianos de alta e média vazão, trazendo na bagagem mais de 5.000 poços perfurados e instalados em todo sudoeste baiano, tendo como principais clientes a CODEVASF, CERB, Prefeituras Municipais e produtores rurais.
-    </p>
-    <p class="text-lg text-gray-700 text-justify indent-0 mb-0">
-        Em 2002 se especializou em obras de canais pluviais (mais de 30.000 m executados), reflorestamento de matas ciliares de rios e redes elétricas, além de edificações e locações de equipamentos.
-    </p>
-    <p class="text-lg text-gray-700 text-justify indent-0 mb-0">
-        Em 2013 foi fundada a SERRA GRANDE CONSTRUÇÕES, voltada para atividades ligadas a parques eólicos e linhas de transmissão. A junção dessas duas empresas criou o GRUPO LM, líder regional em obras de diversos seguimentos, atuando com foco em todas as demandas de implantação de parques solares, eólicos e subestações de energia.
-    </p>
-    <br>
-                        <a href="#services" class="btn-primary inline-flex items-center px-8 py-3 rounded-full font-semibold">
-                            Conheça nossos serviços
-                            <i class="fas fa-arrow-right ml-3"></i>
-                        </a>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"><span class="text-primary">Grupo LM</span>: Nossa História</h2>
+                        <div class="space-y-4 text-lg text-gray-700 text-justify">
+                            <p>Construtora fundada em 1998, a AGROHIDRO inicialmente atendeu a demanda de poços artesianos de alta e média vazão, trazendo na bagagem mais de 5.000 poços perfurados e instalados em todo sudoeste baiano, tendo como principais clientes a CODEVASF, CERB, Prefeituras Municipais e produtores rurais.</p>
+                            <p>Em 2002 se especializou em obras de canais pluviais (mais de 30.000 m executados), reflorestamento de matas ciliares de rios e redes elétricas, além de edificações e locações de equipamentos.</p>
+                            <p>Em 2013 foi fundada a SERRA GRANDE CONSTRUÇÕES, voltada para atividades ligadas a parques eólicos e linhas de transmissão. A junção dessas duas empresas criou o GRUPO LM, líder regional em obras de diversos seguimentos, atuando com foco em todas as demandas de implantação de parques solares, eólicos e subestações de energia.</p>
+                        </div>
+                        <a href="#services" class="btn-primary inline-flex items-center px-8 py-3 rounded-full font-semibold mt-8">Conheça nossos serviços <i class="fas fa-arrow-right ml-3"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="services" class="py-24 bg-gray-50">
-            <div class="container mx-auto px-6">
+             <div class="container mx-auto px-6">
                 <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Nossos Serviços</h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Soluções completas e integradas em construção civil e energia para atender às mais altas exigências do mercado.
-                    </p>
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Nossos Serviços</h2>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Soluções completas e integradas em construção civil e energia para atender às mais altas exigências do mercado.</p>
                 </div>
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="100">
-                        <div class="text-primary mb-6"><i class="fas fa-hard-hat fa-3x"></i></div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Construção Civil</h3>
-                        <p class="text-gray-600 text-justify">Projetos de infraestrutura e edificações com foco em qualidade, durabilidade e sustentabilidade.</p>
-                    </div>
-                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="200">
-                        <div class="text-primary mb-6"><i class="fas fa-charging-station fa-3x"></i></div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Montagem de Subestações</h3>
-                        <p class="text-gray-600 text-justify">Expertise na montagem e manutenção de subestações de energia de alta e média tensão.</p>
-                    </div>
-                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="300">
-                        <div class="text-primary mb-6"><i class="fas fa-solar-panel fa-3x"></i></div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Energia Renovável</h3>
-                        <p class="text-gray-600 text-justify">Implementação completa de parques eólicos e solares com tecnologia de ponta.</p>
-                    </div>
-                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="100">
-                        <div class="text-primary mb-6"><i class="fas fa-tools fa-3x"></i></div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Manutenção de Parques</h3>
-                        <p class="text-gray-600 text-justify">Manutenção especializada em parques eólicos e solares para máxima eficiência e longevidade.</p>
-                    </div>
-                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="200">
-                        <div class="text-primary mb-6"><i class="fas fa-mountain fa-3x"></i></div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Terraplanagem</h3>
-                        <p class="text-gray-600 text-justify">Preparação de terrenos com precisão e agilidade para qualquer tipo de projeto de construção.</p>
-                    </div>
-                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="300">
-                        <div class="text-primary mb-6"><i class="fas fa-truck-monster fa-3x"></i></div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Locação de Equipamentos</h3>
-                        <p class="text-gray-600 text-justify">Frota moderna de equipamentos para atender às suas necessidades com eficiência e segurança.</p>
-                    </div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="100"><div class="text-primary mb-6"><i class="fas fa-hard-hat fa-3x"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-4">Construção Civil</h3><p class="text-gray-600 text-justify">Projetos de infraestrutura e edificações com foco em qualidade, durabilidade e sustentabilidade.</p></div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="200"><div class="text-primary mb-6"><i class="fas fa-charging-station fa-3x"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-4">Montagem de Subestações</h3><p class="text-gray-600 text-justify">Expertise na montagem e manutenção de subestações de energia de alta e média tensão.</p></div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="300"><div class="text-primary mb-6"><i class="fas fa-solar-panel fa-3x"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-4">Energia Renovável</h3><p class="text-gray-600 text-justify">Implementação completa de parques eólicos e solares com tecnologia de ponta.</p></div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="100"><div class="text-primary mb-6"><i class="fas fa-tools fa-3x"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-4">Manutenção de Parques</h3><p class="text-gray-600 text-justify">Manutenção especializada em parques eólicos e solares para máxima eficiência e longevidade.</p></div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="200"><div class="text-primary mb-6"><i class="fas fa-mountain fa-3x"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-4">Terraplanagem</h3><p class="text-gray-600 text-justify">Preparação de terrenos com precisão e agilidade para qualquer tipo de projeto de construção.</p></div>
+                    <div class="service-card bg-white rounded-xl p-8" data-aos="fade-up" data-aos-delay="300"><div class="text-primary mb-6"><i class="fas fa-truck-monster fa-3x"></i></div><h3 class="text-2xl font-bold text-gray-900 mb-4">Locação de Equipamentos</h3><p class="text-gray-600 text-justify">Frota moderna de equipamentos para atender às suas necessidades com eficiência e segurança.</p></div>
                 </div>
             </div>
         </section>
 
         <section id="projects" class="bg-slate-50 py-24 sm:py-32">
-        <div class="container mx-auto px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-                    Projetos que Transformam
-                </h2>
-                <p class="mt-6 text-lg leading-8 text-gray-600">
-                    Conheça alguns dos trabalhos que demonstram nossa capacidade técnica e compromisso com a excelência através de soluções inovadoras em construção e energia.
-                </p>
-            </div>
-
-            <div class="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-
-                <div class="group" data-aos="fade-up" data-aos-delay="100">
-                    <a href="obras1.html#obra-supressao-sondaoeste" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white">
-                        <div class="relative overflow-hidden">
-                            <img src="imagens/obras/01_Supressao_Sondaoeste_EDF/02.jpg" alt="Obra de Supressão em Jacobina" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-                        </div>
-                        <div class="mt-6 p-4"> <span class="project-category-tag">Sondaoeste/EDF</span>
-                            <h3 class="mt-4 text-xl font-bold text-gray-900">Supressão</h3>
-                            <p class="mt-2 text-base text-gray-600">Jacobina, Bahia - 2025</p>
-                        </div>
-                    </a>
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center"><h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">Projetos que Transformam</h2><p class="mt-6 text-lg leading-8 text-gray-600">Conheça alguns dos trabalhos que demonstram nossa capacidade técnica e compromisso com a excelência através de soluções inovadoras em construção e energia.</p></div>
+                <div class="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="group" data-aos="fade-up" data-aos-delay="100"><a href="obras1.html#obra-supressao-sondaoeste" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white"><div class="relative overflow-hidden"><img loading="lazy" src="imagens/obras/01_Supressao_Sondaoeste_EDF/02.jpg" alt="Obra de Supressão em Jacobina" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"></div><div class="p-6"><h3 class="text-xl font-bold text-gray-900">Supressão</h3><p class="mt-2 text-base text-gray-600">Jacobina, Bahia - 2025</p></div></a></div>
+                    <div class="group" data-aos="fade-up" data-aos-delay="200"><a href="obras1.html#obra-subestacao-pindai-ii" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white"><div class="relative overflow-hidden"><img loading="lazy" src="imagens/obras/02_Subestacao_Pindai_II/01.jpg" alt="Obra Subestação Pindaí II" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"></div><div class="p-6"><h3 class="text-xl font-bold text-gray-900">Subestação Pindaí II</h3><p class="mt-2 text-base text-gray-600">Pindaí, Bahia - 2025</p></div></a></div>
+                    <div class="group" data-aos="fade-up" data-aos-delay="300"><a href="obras1.html#obra-complexo-eolico-alto-sertao-iii" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white"><div class="relative overflow-hidden"><img loading="lazy" src="imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/01.jpg" alt="Obra Complexo Eólico Alto Sertão III" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"></div><div class="p-6"><h3 class="text-xl font-bold text-gray-900">Complexo Eólico Alto Sertão III</h3><p class="mt-2 text-base text-gray-600">Alto Sertão, Bahia - 2025</p></div></a></div>
                 </div>
+            </div>
+        </section>
 
-                <div class="group" data-aos="fade-up" data-aos-delay="200">
-                    <a href="obras1.html#obra-subestacao-pindai-ii" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white">
-                        <div class="relative overflow-hidden">
-                            <img src="imagens/obras/02_Subestacao_Pindai_II/01.jpg" alt="Obra Subestação Pindaí II" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-                        </div>
-                        <div class="mt-6 p-4"> <span class="project-category-tag">Renova</span>
-                            <h3 class="mt-4 text-xl font-bold text-gray-900">Subestação Pindaí II</h3>
-                            <p class="mt-2 text-base text-gray-600">Pindaí, Bahia - 2025</p>
-                        </div>
-                    </a>
+        <section id="locacao" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Locação de Equipamentos</h2><p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Precisa de equipamentos de alta performance para sua obra? Fale conosco e solicite um orçamento!</p></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100"><img loading="lazy" src="imagens/equipamentos/motoniveladora.png" alt="Motoniveladora" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md"><h3 class="text-2xl font-bold text-gray-900 mb-4">Motoniveladora</h3><a href="https://wa.me/5577988255980" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i></a></div>
+                    <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200"><img loading="lazy" src="imagens/equipamentos/retroescavadeira.png" alt="Retroescavadeira" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md"><h3 class="text-2xl font-bold text-gray-900 mb-4">Retroescavadeira</h3><a href="https://wa.me/5577988255980" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i></a></div>
+                    <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300"><img loading="lazy" src="imagens/equipamentos/container.jpeg" alt="Container" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md"><h3 class="text-2xl font-bold text-gray-900 mb-4">Container</h3><a href="https://wa.me/5577988255980" target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i></a></div>
                 </div>
+            </div>
+        </section>
 
-                <div class="group" data-aos="fade-up" data-aos-delay="300">
-                    <a href="obras1.html#obra-complexo-eolico-alto-sertao-iii" class="block overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-white">
-                        <div class="relative overflow-hidden">
-                            <img src="imagens/obras/03_Complexo_Eolico_Alto_Sertao_III/01.jpg" alt="Obra Complexo Eólico Alto Sertão III" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105">
-                        </div>
-                        <div class="mt-6 p-4"> <span class="project-category-tag">Renova</span>
-                            <h3 class="mt-4 text-xl font-bold text-gray-900">Complexo Eólico Alto Sertão III</h3>
-                            <p class="mt-2 text-base text-gray-600">Alto Sertão, Bahia - 2025</p>
-                        </div>
-                    </a>
+        <section id="clients" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Clientes e Parceiros</h2><p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Construímos relações de confiança com grandes nomes do mercado.</p></div>
+                <div class="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-x-8 gap-y-12 items-center justify-center">
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/TAESA.png" alt="Logo Taesa" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/NEOENERGIA.png" alt="Logo Neoenergia" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/AUREN.png" alt="Logo Auren" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/ABB.jpg" alt="Logo ABB" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/AES.png" alt="Logo AES" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/AFAP.jpg" alt="Logo AFAP" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/BROOKFIELD.jpg" alt="Logo Brookfield" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/BW.png" alt="Logo BW" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/CHESF.jpg" alt="Logo Chesf" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/ENGELMIG.jpg" alt="Logo Engelmig" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/EQUATORIAL.png" alt="Logo Equatorial" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/EUROGRUAS.jpg" alt="Logo Eurogruas" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/GAMESA.jpg" alt="Logo Gamesa" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/GE.jpg" alt="Logo GE" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/GPEXPAN.jpg" alt="Logo GPEXPAN" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/IBERDROLA.jpg" alt="Logo Iberdrola" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/LEON.jpg" alt="Logo Leon" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/LOMACON.jpg" alt="Logo Lomacon" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/MERCURIUS.jpg" alt="Logo Mercurius" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/PALAZZO.jpg" alt="Logo Palazzo" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/PHILLIS.jpg" alt="Logo Phillis" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/PLANERGY.jpg" alt="Logo Planergy" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/QUEIROZ.jpg" alt="Logo Queiroz" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/RENOVA.jpg" alt="Logo Renova" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/SADESUL.jpg" alt="Logo Sadesul" class="max-h-20 w-auto object-contain"></div>
+                    <div class="flex justify-center items-center"><img loading="lazy" src="imagens/logo/logo_cliente/SNEFBRASIL.jpg" alt="Logo Snef Brasil" class="max-h-20 w-auto object-contain"></div>
                 </div>
-                </div>
-
             </div>
-    </section>
-
-    <section id="locacao" class="py-24 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Locação de Equipamentos</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Precisa de equipamentos de alta performance para sua obra? Fale conosco e solicite um orçamento!
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
-                <img src="imagens/equipamentos/motoniveladora.png" alt="Motoniveladora" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Motoniveladora</h3>
-                <p class="text-gray-700 mb-6">Ideal para nivelamento de terrenos, acabamento de estradas e pátios.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Motoniveladora." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
-                <img src="imagens/equipamentos/retroescavadeira.png" alt="Retroescavadeira" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Retroescavadeira</h3>
-                <p class="text-gray-700 mb-6">Versátil para escavações, aterros e carregamento de materiais.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Retroescavadeira." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="300">
-                <img src="imagens_equipamentos/pa_carregadeira.jpg" alt="Pá Carregadeira" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Pá Carregadeira</h3>
-                <p class="text-gray-700 mb-6">Eficiente para carregar caminhões, mover grandes volumes de material e nivelar.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Pá Carregadeira." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="100">
-                <img src="imagens_equipamentos/escavadeira_hidraulica.jpg" alt="Escavadeira Hidráulica" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Escavadeira Hidráulica</h3>
-                <p class="text-gray-700 mb-6">Potente para grandes escavações, demolições e movimentação de terra.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Escavadeira Hidráulica." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="200">
-                <img src="imagens/equipamentos/rolo_compactador.png" alt="Rolo Compactador" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Rolo Compactador</h3>
-                <p class="text-gray-700 mb-6">Essencial para compactação de solos, asfalto e bases em diversas obras.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Rolo Compactador." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="300">
-                <img src="imagens_equipamentos/caminhao_munck.jpg" alt="Caminhão Munck" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Caminhão Munck</h3>
-                <p class="text-gray-700 mb-6">Utilizado para movimentação, carga e descarga de materiais pesados e içamento.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Caminhão Munck." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="100">
-                <img src="imagens_equipamentos/caminhao_basculante.jpg" alt="Caminhão Basculante" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Caminhão Basculante</h3>
-                <p class="text-gray-700 mb-6">Perfeito para transporte de areia, brita, terra e entulho com descarga rápida.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Caminhão Basculante." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center hidden" data-aos="fade-up" data-aos-delay="200">
-                <img src="imagens_equipamentos/caminhao_prancha.jpg" alt="Caminhão Prancha" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Caminhão Prancha</h3>
-                <p class="text-gray-700 mb-6">Ideal para transporte de máquinas pesadas e equipamentos de grande porte.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Caminhão Prancha." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-
-            <div class="service-card bg-gray-50 rounded-xl p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
-                <img src="imagens/equipamentos/container.jpeg" alt="Container" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Container</h3>
-                <p class="text-gray-700 mb-6">Solução prática para armazenamento seguro no canteiro de obras.</p>
-                <a href="https://wa.me/5577988255980?text=Olá! Gostaria de um orçamento para locação de Container." target="_blank" class="btn-primary inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm">
-                    Orçar via WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-       <!-- INÍCIO DO CÓDIGO DE SUBSTITUIÇÃO -->
-
-<section id="clients" class="py-24 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Clientes e Parceiros</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Construímos relações de confiança com grandes nomes do mercado.
-            </p>
-        </div>
-        
-        <!-- Grade de logos maior, colorida e com novo efeito de hover -->
-        <div class="mt-16 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-x-8 gap-y-12 items-center justify-center" data-aos="fade-up" data-aos-delay="200">
-
-            <!-- Efeito: Os logos agora levantam e ganham uma sombra sutil ao passar o mouse -->
-
-          <!--  <a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/01.jpg" alt="Logo Cliente" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a> -->
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/TAESA.png" alt="Logo Parceiro ABB" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/NEOENERGIA.png" alt="Logo Parceiro ABB" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/AUREN.png" alt="Logo Parceiro ABB" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/ABB.jpg" alt="Logo Parceiro ABB" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/AES.png" alt="Logo Cliente AES" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/AFAP.jpg" alt="Logo Parceiro AFAP" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/BROOKFIELD.jpg" alt="Logo Cliente Brookfield" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/BW.png" alt="Logo Parceiro BW" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/CHESF.jpg" alt="Logo Parceiro Chesf" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<!-- <a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/EDF.png" alt="Logo Parceiro EDF" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a> -->
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/ENGELMIG.jpg" alt="Logo Parceiro Engelmig" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/EQUATORIAL.png" alt="Logo Parceiro Equatorial" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/EUROGRUAS.jpg" alt="Logo Parceiro Eurogruas" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/GAMESA.jpg" alt="Logo Parceiro Gamesa" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<!-- <a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/GBIFRIGORIFICO.jpg" alt="Logo Parceiro GBI Frigorífico" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a> -->
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/GE.jpg" alt="Logo Parceiro GE" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/GPEXPAN.jpg" alt="Logo Parceiro GPEXPAN" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/IBERDROLA.jpg" alt="Logo Parceiro Iberdrola" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/LEON.jpg" alt="Logo Parceiro Leon" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/LOMACON.jpg" alt="Logo Parceiro Lomacon" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/MERCURIUS.jpg" alt="Logo Parceiro Mercurius" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/PALAZZO.jpg" alt="Logo Parceiro Palazzo" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/PHILLIS.jpg" alt="Logo Parceiro Phillis" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/PLANERGY.jpg" alt="Logo Parceiro Planergy" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/QUEIROZ.jpg" alt="Logo Parceiro Queiroz" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/RENOVA.jpg" alt="Logo Parceiro Renova" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/SADESUL.jpg" alt="Logo Parceiro Sadesul" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-<a href="#clients" class="flex justify-center items-center">
-    <img src="imagens/logo/logo_cliente/SNEFBRASIL.jpg" alt="Logo Parceiro Snef" class="max-h-20 w-auto object-contain transition-all duration-300 ease-in-out hover:-translate-y-2 hover:drop-shadow-lg">
-</a>
-            <!-- Adicione ou remova outros logos seguindo exatamente o mesmo padrão -->
-
-        </div>
-    </div>
-</section>
-
-<!-- FIM DO CÓDIGO DE SUBSTITUIÇÃO -->
+        </section>
 
         <section id="contact" class="py-24 bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Vamos Juntos</h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Nossa equipe está pronta para entender seu projeto e oferecer a melhor solução. Entre em contato conosco.
-                    </p>
-                </div>
-                
+                <div class="text-center mb-12" data-aos="fade-up"><h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Vamos Juntos</h2><p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Nossa equipe está pronta para entender seu projeto e oferecer a melhor solução. Entre em contato conosco.</p></div>
                 <div class="max-w-4xl mx-auto bg-gray-50 p-8 sm:p-12 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="text-primary mt-1"><i class="fas fa-phone-alt fa-lg"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Telefone</h4>
-                                    <p class="text-gray-600">(77) 3451-2103</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="text-primary mt-1"><i class="fab fa-whatsapp fa-lg"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">WhatsApp</h4>
-                                    <p class="text-gray-600">(71) 9 8143-1000</p>
-                                    <p class="text-gray-600">Locação: (77) 9 8825-5980</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="text-primary mt-1"><i class="fas fa-envelope fa-lg"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Email</h4>
-                                    <p class="text-gray-600">financeiro@grupolm.org</p>
-                                    <p class="text-gray-600">luiz@grupolm.org</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="text-primary mt-1"><i class="fas fa-map-marker-alt fa-lg"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Endereço</h4>
-                                    <p class="text-gray-600 text-justify">Av. Barão do Rio Branco, nº 1605 B, Bairro São Francisco, Guanambi - BA, CEP: 46.430-000</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="text-primary mt-1"><i class="fas fa-clock fa-lg"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">Horário</h4>
-                                    <p class="text-gray-600">Seg a Sex: 8h às 12h e 14h às 18h</p>
-                                    <p class="text-gray-600">Sáb e Dom: Fechado</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="space-y-6"><div class="flex items-start gap-4"><div class="text-primary mt-1"><i class="fas fa-phone-alt fa-lg"></i></div><div><h4 class="font-bold text-gray-900">Telefone</h4><p class="text-gray-600">(77) 3451-2103</p></div></div><div class="flex items-start gap-4"><div class="text-primary mt-1"><i class="fab fa-whatsapp fa-lg"></i></div><div><h4 class="font-bold text-gray-900">WhatsApp</h4><p class="text-gray-600">(71) 9 8143-1000</p><p class="text-gray-600">Locação: (77) 9 8825-5980</p></div></div><div class="flex items-start gap-4"><div class="text-primary mt-1"><i class="fas fa-envelope fa-lg"></i></div><div><h4 class="font-bold text-gray-900">Email</h4><p class="text-gray-600">financeiro@grupolm.org</p><p class="text-gray-600">luiz@grupolm.org</p></div></div></div>
+                        <div class="space-y-6"><div class="flex items-start gap-4"><div class="text-primary mt-1"><i class="fas fa-map-marker-alt fa-lg"></i></div><div><h4 class="font-bold text-gray-900">Endereço</h4><p class="text-gray-600 text-justify">Av. Barão do Rio Branco, nº 1605 B, Bairro São Francisco, Guanambi - BA, CEP: 46.430-000</p></div></div><div class="flex items-start gap-4"><div class="text-primary mt-1"><i class="fas fa-clock fa-lg"></i></div><div><h4 class="font-bold text-gray-900">Horário</h4><p class="text-gray-600">Seg a Sex: 8h às 12h e 14h às 18h</p><p class="text-gray-600">Sáb e Dom: Fechado</p></div></div></div>
                     </div>
                     <div class="mt-10 text-center">
                         <a href="https://wa.me/5577988255980?text=Oi!%20Vi%20o%20site%20do%20Grupo%20LM%20e%20gostaria%20de%20um%20orçamento." target="_blank" class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-lg">
@@ -752,16 +200,14 @@
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- PLACEHOLDER PARA O RODAPÉ (será preenchido pelo main.js) -->
     <footer id="main-footer" class="bg-primary text-gray-300"></footer>
 
-    <!-- Botão Voltar ao Topo -->
     <button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-lg transition-all duration-300 opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
     </button>
-
-    <!-- Scripts externos e a chamada ÚNICA para o script principal -->
+    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="js/main.js"></script>

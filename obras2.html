@@ -6,179 +6,52 @@
     <title>Grupo LM - Portfólio de Obras</title>
     <meta name="description" content="Explore o portfólio detalhado de obras de engenharia, energia e construção do Grupo LM.">
 
+    <!-- Meta Tags Open Graph -->
+    <meta property="og:title" content="Portfólio de Obras | Grupo LM" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.grupolm.org/obras1.html" />
+    <meta property="og:image" content="https://www.grupolm.org/imagens/imagens_soltas/subestacao_pindai_II.jpg" />
+    
     <link rel="icon" href="imagens/logo/logo_favicon.png" type="image/png">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    primary: '#213761', /* Esta é a cor azul escura que o rodapé usa */
-                    secondary: '#ffffff',
-                    dark: '#000000'
-                },
-                fontFamily: {
-                    sans: ['Inter', 'sans-serif'],
-                },
-            }
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#213761' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } }
         }
-    }
-</script>
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- ESTILOS ESSENCIAIS -->
     <style>
-        <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* ***** INÍCIO: CSS do Preloader ***** */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #213761; /* Cor primária do seu tema */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999; /* Garante que fique acima de tudo */
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
-        }
-
-        .preloader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .spinner {
-            border: 5px solid rgba(255, 255, 255, 0.2); /* Aro transparente branco */
-            border-top: 5px solid #ffffff; /* Aro branco que gira */
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* ***** FIM: CSS do Preloader ***** */
-
-        /* ---- ESTILOS DO CABEÇALHO E TRANSIÇÃO ---- */
-        .navbar {
-            background-color: transparent;
-            transition: all 0.4s ease-out;
-        }
-        
-
-        /* ---- ESTILOS DO CABEÇALHO E TRANSIÇÃO ---- */
-        .navbar {
-            background-color: transparent;
-            transition: all 0.4s ease-out;
-        }
-        .navbar.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Lógica para trocar as logos na rolagem */
-        .logo-branca { display: block; }
-        .logo-cinza { display: none; }
-        .navbar.scrolled .logo-branca { display: none; }
-        .navbar.scrolled .logo-cinza { display: block; }
-
-        /* Lógica para trocar a cor dos links na rolagem */
-        .navbar.scrolled .nav-link,
-        .navbar.scrolled .mobile-menu-icon {
-            color: #000000;
-        }
-        .navbar.scrolled .nav-link:hover {
-            color: #213761;
-        }
-
-        /* Estilo do link ativo na navegação */
-        .nav-link.active {
-            font-weight: 700;
-            border-bottom: 2px solid white;
-        }
-        .navbar.scrolled .nav-link.active {
-            border-bottom-color: #213761;
-        }
-
-        /* Lógica para o menu mobile */
+        body { font-family: 'Inter', sans-serif; }
+        .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #213761; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease-out; }
+        .preloader.fade-out { opacity: 0; }
+        .spinner { border: 5px solid rgba(255, 255, 255, 0.2); border-top-color: #ffffff; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .navbar { transition: all 0.4s ease-out; }
+        .navbar.scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); }
+        .logo-branca { display: block; } .logo-cinza { display: none; }
+        .navbar.scrolled .logo-branca { display: none; } .navbar.scrolled .logo-cinza { display: block; }
+        .navbar.scrolled .nav-link, .navbar.scrolled .mobile-menu-icon { color: #000000 !important; }
+        .navbar.scrolled .nav-link:hover { color: #213761 !important; }
+        .navbar.scrolled .btn-orcamento { background-color: #213761 !important; color: #ffffff !important; }
         .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .mobile-menu.open { max-height: 500px; }
-
-        .hero-overlay {
-            background: linear-gradient(135deg, rgba(33, 55, 97, 0.35) 0%, rgba(26, 44, 79, 0.9) 100%);
-        }
-
-        /* Adicione estas regras para inverter as cores do botão 'Orçamento' no scroll */
-        .navbar.scrolled .btn-orcamento {
-            background-color: #213761 !important; /* Fundo azul primário */
-            color: #ffffff !important;           /* Texto branco */
-        }
-
-        .navbar.scrolled .btn-orcamento:hover {
-            background-color: #1a2c4f !important; /* Tom de azul mais escuro no hover */
-        }
-
+        .hero-overlay { background: linear-gradient(135deg, rgba(33, 55, 97, 0.35) 0%, rgba(26, 44, 79, 0.9) 100%); }
+        .nav-link.active { font-weight: 700; border-bottom: 2px solid white; }
+        .navbar.scrolled .nav-link.active { border-bottom-color: #213761; }
     </style>
 </head>
+<body class="bg-slate-50 overflow-x-hidden">
 
-  <!-- ===================================================================== -->
-<!-- INFORMAÇÕES DE PRÉ-VISUALIZAÇÃO (WHATSAPP, REDES SOCIAIS) - OPEN GRAPH -->
-<!-- ===================================================================== -->
+    <div id="preloader" class="preloader"><div class="spinner"></div></div>
 
-<!-- Título que aparecerá no card -->
-<meta property="og:title" content="Portfólio de Obras | Grupo LM" />
-
-<!-- Tipo de conteúdo (pode ser "article" se for um portfólio) -->
-<meta property="og:type" content="article" />
-
-<!-- Descrição da página de obras -->
-<meta property="og:description" content="Explore os projetos de engenharia, energia e construção civil realizados com a excelência e compromisso do Grupo LM." />
-
-<!-- A URL completa da sua página inicial -->
-<meta property="og:url" content="https://www.grupolm.org" />
-
-<!-- Uma imagem de destaque da página de obras -->
-<!-- Pode ser uma colagem de projetos ou a foto do projeto mais impressionante -->
-<meta property="og:image" content="https://www.grupolm.org/imagens/imagens_soltas/subestacao_pindai_II.jpg" />
-
-<!-- O nome do seu site -->
-<meta property="og:site_name" content="Grupo LM" />
-
-<!-- Idioma do conteúdo -->
-<meta property="og:locale" content="pt_BR" />
-
-<!-- FIM DAS TAGS OPEN GRAPH -->
-
-<body class="bg-slate-50">
-
-     <div id="preloader" class="preloader">
-        <div class="spinner"></div>
-    </div>
-
-   <header id="main-header" class="navbar fixed w-full z-50 py-4"></header>
+    <header id="main-header" class="navbar fixed w-full z-50 py-4"></header>
 
     <main>
         <section class="relative bg-gray-900 pt-40 pb-12 text-center">
@@ -1343,16 +1216,13 @@ class="py-12 bg-gray text-center">
     </nav>
 </section>
 
-    <footer id="main-footer" class="bg-primary text-gray-300"></footer>
+     <footer id="main-footer" class="bg-primary text-gray-300"></footer>
 
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Botão Voltar ao Topo -->
     <button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-lg transition-all duration-300 opacity-0 invisible z-40 hover:bg-blue-800" title="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
     </button>
     
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
 
 </body>
